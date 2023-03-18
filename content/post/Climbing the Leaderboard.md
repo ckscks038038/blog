@@ -6,7 +6,7 @@ draft: false
 
 ## 前言：
 
-這題來自 **HackerRank** 的 **_1 Month Preparation Kit - Week 3_**，結合了 `35. Search Insert Position`以及`26. Remove Duplicates from Sorted Array`兩題的解題套路。
+這題來自 **HackerRank** 的 **_1 Month Preparation Kit - Week 3_**，結合了 Leetocde `35. Search Insert Position`以及`26. Remove Duplicates from Sorted Array`兩題的解題套路。
 
 ## 題目：
 
