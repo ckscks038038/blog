@@ -3,6 +3,15 @@ languageCode: en-us
 title: Lutein 40g
 theme: PaperMod
 
+params:
+  homeInfoParams:
+    Title: 'Hello! This is Lutein 40g'
+    Content: 'Welcome to our blog, it is a spot where we jot down our random thoughts and ideas.'
+
+  ShowBreadCrumbs: true
+  ShowReadingTime: true
+  ShowPostNavLinks: true
+
 menu:
   main:
     - identifier: categories
