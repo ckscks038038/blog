@@ -2,6 +2,8 @@
 title: 'Climbing the Leaderboard'
 date: 2023-03-18T14:13:31+08:00
 draft: false
+tags: ['binary search', 'array']
+categories: ['leetcode', 'HackerRank']
 ---
 
 ## 前言：
