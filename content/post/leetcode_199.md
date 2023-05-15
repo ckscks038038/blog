@@ -3,6 +3,8 @@ title: "199. Binary Tree Right Side View"
 date: 2023-05-16T00:17:01+08:00
 draft: false
 author: 'Yang'
+tags: ['bfs', 'deque', 'tree', 'level order traversal']
+categories: ['leetcode']
 ---
 ## 前言：
 這題BFS觀念 `level order traveral`, 學習如何在python中使用deque來解決BFS問題，並且學習在traversal時考慮子節點有`null`的情況
