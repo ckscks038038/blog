@@ -55,7 +55,7 @@ Explanation: Root is considered as good.
 - pre-order
 - post-order
 
-這題用in-order來解，才可以由根節點開始，由上往下(`pre-order`, `post-order`都是由下往上)
+這題用in-order，才可由根節點由上往下找(`pre-order`, `post-order`都是由下往上)
 
 1. **process**的部份用來處理更新最大值以及判斷當前節點是否為good node
 
