@@ -3,7 +3,7 @@ title: "297. Serialize and Deserialize Binary Tree"
 date: 2023-05-17T00:38:17+08:00
 draft: false
 author: 'Yang'
-tags: ['tree']
+tags: ['tree', 'DFS']
 categories: ['leetcode']
 ---
 ## 前言：
