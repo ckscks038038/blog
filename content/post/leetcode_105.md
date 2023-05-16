@@ -36,8 +36,8 @@ Output: [-1]
 3. 在得到`index`後，回到**Preorder**，從剛剛建立好的root node往右走**index**步，就是左子樹於**Preorder**中最後一個元素，`index+1`開始接著就都是右子樹的元素了
 4. 而此時**Inorder**中，`index+1`開始也都是右子樹的元素
 
-### 1. 要注意base case的條件
-在跑遞迴切割出sub array時，左子樹有可能會有preorder已經是空array，但右子樹還有元素的情況，只要其中一個是空array則要觸發base case
+### 1. base case的條件
+在跑遞迴切割出sub array時，如果剩下一個元素了(代表他就是leaf node)，則它的左右子樹都是null，此時切出來的sub array會是空的，要觸發base case
 
 ```
 root.left = self.buildTree(preorder[1:mid + 1], inorder[:mid])
