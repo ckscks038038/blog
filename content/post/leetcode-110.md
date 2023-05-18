@@ -1,5 +1,5 @@
 ---
-title: 'Balanced Binary Tree - Leetcode 110'
+title: '110. Balanced Binary Tree'
 date: 2023-04-10T00:39:24+08:00
 draft: false
 tags: ['binary tree', 'tree', 'easy']
