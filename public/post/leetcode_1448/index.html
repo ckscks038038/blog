@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>1448. Count Good Nodes in Binary Tree | Lutein 40g</title>
+<meta name="keywords" content="tree, DFS, Microsoft">
+<meta name="description" content="前言： 這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個非null節點都被當作參數call一次DFS
+這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成process跟iterative call兩部份)，再來改process確切要做什麼、以及iterative call的return value要如何處理。
+題目： Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.
+Return the number of good nodes in the binary tree.
+* Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node.">
+<meta name="author" content="Yang">
+<link rel="canonical" href="http://localhost:1313/blog/post/leetcode_1448/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css" integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/post/leetcode_1448/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="Lutein 40g (Alt + H)">Lutein 40g</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      1448. Count Good Nodes in Binary Tree
+    </h1>
+    <div class="post-meta">May 16, 2023&amp;nbsp;·&amp;nbsp;Yang
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="前言">前言：<a hidden class="anchor" aria-hidden="true" href="#前言">#</a></h2>
+<p>這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個<code>非null</code>節點都被當作參數call一次DFS</p>
+<p>這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成<strong>process</strong>跟<strong>iterative call</strong>兩部份)，再來改<strong>process</strong>確切要做什麼、以及<strong>iterative call</strong>的<code>return value</code>要如何處理。</p>
+<hr>
+<h2 id="題目">題目：<a hidden class="anchor" aria-hidden="true" href="#題目">#</a></h2>
+<p><strong>Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.</strong></p>
+<p><strong>Return the number of good nodes in the binary tree.</strong></p>
+<pre tabindex="0"><code>* Example 1:
+Input: root = [3,1,4,3,null,1,5]
+Output: 4
+Explanation: Nodes in blue are good.
+Root Node (3) is always a good node.
+Node 4 -&gt; (3,4) is the maximum value in the path starting from the root.
+Node 5 -&gt; (3,4,5) is the maximum value in the path
+Node 3 -&gt; (3,1,3) is the maximum value in the path.
+
+* Example 2:
+Input: root = [3,3,null,4,2]
+Output: 3
+Explanation: Node 2 -&gt; (3, 3, 2) is not good, because &#34;3&#34; is higher than it.
+
+* Example 3:
+Input: root = [1]
+Output: 1
+Explanation: Root is considered as good.
+</code></pre><hr>
+<h2 id="解題思路">解題思路：<a hidden class="anchor" aria-hidden="true" href="#解題思路">#</a></h2>
+<p>題目定義是在<strong>走到該節點時，沿路都沒有比他大的節點</strong>的條件下，就<code>res += 1</code>
+既然要是依照<strong>沿路遇到的節點</strong>作為參考，用DFS遍歷整棵樹就可以達成<strong>沿路</strong>的概念，並且把一路更新遇到的最大值，只要當前節點的value沒有比當前的最大值還小(也就是一路上中的最大值，<code>node &gt;= maxVal</code>)，則該節點是一個<strong>good node</strong></p>
+<h3 id="1-先寫出dfs雛型">1. 先寫出DFS雛型<a hidden class="anchor" aria-hidden="true" href="#1-先寫出dfs雛型">#</a></h3>
+<p>要注意DFS有分三種：</p>
+<ul>
+<li>in-order</li>
+<li>pre-order</li>
+<li>post-order</li>
+</ul>
+<p>這題用in-order，才可由根節點由上往下找(<code>pre-order</code>, <code>post-order</code>都是由下往上)</p>
+<ol>
+<li>
+<p><strong>process</strong>的部份用來處理更新最大值以及判斷當前節點是否為good node</p>
+</li>
+<li>
+<p><strong>interative call</strong>則會回傳從子節點們的出發所找到的good node數量</p>
+</li>
+</ol>
+<h3 id="2-process-沿途更新最大值該節點是否是good-node">2. process: 沿途更新最大值、該節點是否是good node?<a hidden class="anchor" aria-hidden="true" href="#2-process-沿途更新最大值該節點是否是good-node">#</a></h3>
+<p>沿途更新最大值很容易：
+maxVal = max(maxVal, root.val)</p>
+<p>判斷該節點是否是good node，參考neetcode乾淨的python寫法，用一行就可以搞定if else
+只有遇到比自己的數值還大的node才使得自己不是good node，意即遇到<strong>比自己小</strong>、<strong>跟自己一樣大</strong>的節點都沒關係:</p>
+<pre tabindex="0"><code>res = 1 if root.val &gt;= maxVal else 0 
+</code></pre><h3 id="3-即使當前節點不是good-node也不影響他的子節點">3. 即使當前節點不是good node，也不影響他的子節點<a hidden class="anchor" aria-hidden="true" href="#3-即使當前節點不是good-node也不影響他的子節點">#</a></h3>
+<p>這題用DFS遍歷要走到底，因為即使當前節點不是good node，<strong>後面還是可以找到good node</strong>，只是當前節點不會更新最大值而已。</p>
+<hr>
+<h1 id="程式碼">程式碼：<a hidden class="anchor" aria-hidden="true" href="#程式碼">#</a></h1>
+<pre tabindex="0"><code># Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, val=0, left=None, right=None):
+#         self.val = val
+#         self.left = left
+#         self.right = right
+class Solution:
+    def goodNodes(self, root: TreeNode) -&gt; int:
+
+        def dfs(root, maxVal):
+            if not root:
+                return 0
+
+            # process
+            maxVal = max(maxVal, root.val)
+            res = 1 if root.val &gt;= maxVal else 0    
+            
+            res += dfs(root.left, maxVal)
+            res += dfs(root.right, maxVal)
+
+            return res
+        
+        return dfs(root, root.val) 
+    
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/tree/">Tree</a></li>
+      <li><a href="http://localhost:1313/blog/tags/dfs/">DFS</a></li>
+      <li><a href="http://localhost:1313/blog/tags/microsoft/">Microsoft</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>199. Binary Tree Right Side View | Lutein 40g</title>
+<meta name="keywords" content="bfs, deque, tree, level order traversal">
+<meta name="description" content="前言： 這題BFS觀念 level order traveral, 學習如何在python中使用deque來解決BFS問題，並且學習在traversal時考慮子節點有null的情況
+題目： Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
+* Example 1: Input: root = [1,2,3,null,5,null,4] Output: [1,3,4] * Example 2: Input: root = [1,null,3] Output: [1,3] * Example 3: Input: root = [] Output: [] 解題思路： 如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。
+1. 創建deque, 比list更適合 為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用popleft()以及append達成兩個要求。">
+<meta name="author" content="Yang">
+<link rel="canonical" href="http://localhost:1313/blog/post/leetcode_199/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css" integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/post/leetcode_199/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="Lutein 40g (Alt + H)">Lutein 40g</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      199. Binary Tree Right Side View
+    </h1>
+    <div class="post-meta">May 16, 2023&amp;nbsp;·&amp;nbsp;Yang
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="前言">前言：<a hidden class="anchor" aria-hidden="true" href="#前言">#</a></h2>
+<p>這題BFS觀念 <code>level order traveral</code>, 學習如何在python中使用deque來解決BFS問題，並且學習在traversal時考慮子節點有<code>null</code>的情況</p>
+<hr>
+<h2 id="題目">題目：<a hidden class="anchor" aria-hidden="true" href="#題目">#</a></h2>
+<p><strong>Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.</strong></p>
+<pre tabindex="0"><code>* Example 1:
+Input: root = [1,2,3,null,5,null,4]
+Output: [1,3,4]
+
+* Example 2:
+Input: root = [1,null,3]
+Output: [1,3]
+
+* Example 3:
+Input: root = []
+Output: []
+</code></pre><hr>
+<h2 id="解題思路">解題思路：<a hidden class="anchor" aria-hidden="true" href="#解題思路">#</a></h2>
+<p>如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。</p>
+<h3 id="1-創建deque-比list更適合">1. 創建deque, 比list更適合<a hidden class="anchor" aria-hidden="true" href="#1-創建deque-比list更適合">#</a></h3>
+<p>為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用<code>popleft()</code>以及<code>append</code>達成兩個要求。</p>
+<h3 id="2-考慮空子節點的情況">2. 考慮空子節點的情況<a hidden class="anchor" aria-hidden="true" href="#2-考慮空子節點的情況">#</a></h3>
+<p>除非是完全二元樹(complete binary tree)，否則要考慮到子節點為空的情況避免error。在當前level中取出一個<code>node</code>時，要先判斷這個<code>node</code>是否為<code>null</code>，如果是空的話就不要往下找了；不是空的話，則可以將他的左右子樹append到deque當中。</p>
+<p>並且，只有該node<strong>有值</strong>，才有可能是<code>rightSide</code> value(空的node沒有value得跳過嘛)。並且依據每個level的traverse都是<strong>由左往右</strong>的特性，最後的<code>rightSide</code>就是traverse該level最後一次遇到的<em>有值</em> node</p>
+<p>另外需要注意有可能整個level都是空節點，這時候traverse完整個level都不會找到<code>rightSide</code> value，所以要加上一個判斷確保append的數值是合理的。</p>
+<hr>
+<h1 id="程式碼">程式碼：<a hidden class="anchor" aria-hidden="true" href="#程式碼">#</a></h1>
+<pre tabindex="0"><code>class Solution:
+    def rightSideView(self, root: Optional[TreeNode]) -&gt; List[int]:
+        res = []
+        q = collections.deque([root])
+
+        while q:
+            rightSide = None
+            qLen = len(q)
+
+            # qLen will be updated during this for loop
+            # node could be null(since a node could have null children)
+            # use a if condition to decide if there&#39;s need to append children
+            # also, only if there&#39;s node then we can decide &#34;rightSide&#34;
+            for i in range(qLen):
+                node = q.popleft()
+                if node:
+                    rightSide = node
+                    q.append(node.left)
+                    q.append(node.right)
+
+            if rightSide:
+                res.append(rightSide.val)
+        return res
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/bfs/">BFS</a></li>
+      <li><a href="http://localhost:1313/blog/tags/deque/">Deque</a></li>
+      <li><a href="http://localhost:1313/blog/tags/tree/">Tree</a></li>
+      <li><a href="http://localhost:1313/blog/tags/level-order-traversal/">Level Order Traversal</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

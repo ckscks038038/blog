@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>CMU-15445 on Lutein 40g</title>
+    <link>http://localhost:1313/blog/categories/cmu-15445/</link>
+    <description>Recent content in CMU-15445 on Lutein 40g</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language><atom:link href="http://localhost:1313/blog/categories/cmu-15445/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Member Initializer List</title>
+      <link>http://localhost:1313/blog/post/member_initializer_list/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://localhost:1313/blog/post/member_initializer_list/</guid>
+      <description>Initialization vs. Assignment in Constructor Member Initializer List class Example { int* m_ptr; public: Example(int* ptr = nullptr) : m_ptr(ptr) { // Member variable m_ptr is initialized directly } }; Initialization happens once during object creation.
+More efficient, especially for complex types.
+Required for const and reference members:
+class Example { const int m_value; public: Example(int value) : m_value(value) {} // Must use initializer list }; Assignment in Constructor Body class Example { int* m_ptr; public: Example(int* ptr = nullptr) { m_ptr = ptr; // m_ptr is default-initialized, then assigned } }; Involves default initialization followed by assignment.</description>
+    </item>
+    
+  </channel>
+</rss>

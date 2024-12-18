@@ -31,7 +31,7 @@ params:
         enabled: true
         title: "Lutein 40g" # optional default will be site title
         subtitle: "This is subtitle"
-        imageUrl: "/static/img/keyboard.png"
+        imageUrl: "/blog/img/keyboard.png"
         imageTitle: "<title of image as alt>" # optional
         imageWidth: 200 # custom size
         imageHeight: 200 # custom size
@@ -39,9 +39,9 @@ params:
             - name: Github
               url: "https://github.com/"
             - name: Post
-              url: "/post"
+              url: "/blog/post"
             - name: Resume
-              url: "/resume.pdf"
+              url: "/blog/resume.pdf"
             
 
     socialIcons: # optional

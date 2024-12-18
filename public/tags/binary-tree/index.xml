@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Binary Tree on Lutein 40g</title>
+    <link>http://localhost:1313/blog/tags/binary-tree/</link>
+    <description>Recent content in Binary Tree on Lutein 40g</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 10 Apr 2023 00:39:24 +0800</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/binary-tree/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>110. Balanced Binary Tree</title>
+      <link>http://localhost:1313/blog/post/leetcode-110/</link>
+      <pubDate>Mon, 10 Apr 2023 00:39:24 +0800</pubDate>
+      
+      <guid>http://localhost:1313/blog/post/leetcode-110/</guid>
+      <description>前言： 這題被歸類為 easy，但目前一刷完體感上，並沒有很直覺地理解遞迴，要再多 trace 才可以體會 dfs 在這的含意(也可能我還沒有透徹搞懂 dfs)
+題目： 給一個 binary tree，回傳該樹是否 balanced
+解題思路： 1. 暴力解： 從 root node 開始，算出其左子樹與右子樹的長度，比較兩者長度相減的絕對值是否有&amp;lt;=1，如果有則對其左子樹與右子樹重複此動作直接走完所有 node，否則回傳 False
+&amp;mdash; 此法可解(參考賈考博)，但因為每次都需要重複走過所有子節點，所以直接複雜度是 O(n^2)。
+2. 最優解： 暴力解的思路是由上往下，才會重複 traverse 位於下方的子節點們，那麼這次就從下往上 traverse，這樣每個子節點只需要經過一次，並且往上傳遞兩個資訊:
+是否 balanced 高度 對每個子節點而言，都可以把自己視為當前的 root node，然後來檢查自己是否 balanced，以及自己的高度是多少。假設身為 left node，它的高度與 right node 的高度符合 balanced tree 的要求： abs(height[left] - height[right]) &amp;lt;= 1，也保證整棵樹是平衡的，因為 left node 或是 right node 自己可能就是 unbalanced tree(樹高跟是否 balanced 無關唷)。
+因此，對於當前的 root node 而言，除了要檢查左右子樹的樹高是否平衡，也要檢查兩者自己本身是否是平衡的。
+程式碼： 暴力解： class Solution: def isBalanced(self, root: TreeNode) -&amp;gt; bool: if root is None: return True leftHeight = self.</description>
+    </item>
+    
+  </channel>
+</rss>

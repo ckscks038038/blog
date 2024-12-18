@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>78. Subsets | Lutein 40g</title>
+<meta name="keywords" content="backtracking, DFS">
+<meta name="description" content="前言： 這題在school也有寫過，當時還負責主講，沒想到時到今日全都忘光了。這次看neetcode的作法選用DFS，赫然發現這是一個更好的作法。
+題目： Given an integer array nums of unique elements, return all possible subsets(the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+* Example 1: Input: nums = [1,2,3] Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 給定一個list:
+arr = [1,2] 用一個暫存的subset來存放當前可能的子集合，每個元素都有兩種選擇，要放入subset或是不要放入。
+[] / \ [] [1] / \ / \ [] [2] [1] [1,2] 從上圖可以看出，每一層都是對於一個元素的取捨，從最上面的元素1開始，選擇左邊的路就是不放入當前元素，右邊的路就是放入，最後生成所有可能的子集
+1. Base case 因為input是一個array，所以當array走到底時就要跳出，此時也代表走到這條DFS路線上的終點，所以可以將當前的subset加入到res當中">
+<meta name="author" content="Yang">
+<link rel="canonical" href="http://localhost:1313/blog/post/leetcode_78/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css" integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/post/leetcode_78/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="Lutein 40g (Alt + H)">Lutein 40g</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      78. Subsets
+    </h1>
+    <div class="post-meta">May 17, 2023&amp;nbsp;·&amp;nbsp;Yang
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="前言">前言：<a hidden class="anchor" aria-hidden="true" href="#前言">#</a></h2>
+<p>這題在school也有寫過，當時還負責主講，沒想到時到今日全都忘光了。這次看neetcode的作法選用DFS，赫然發現這是一個更好的作法。</p>
+<hr>
+<h2 id="題目">題目：<a hidden class="anchor" aria-hidden="true" href="#題目">#</a></h2>
+<p><strong>Given an integer array nums of unique elements, return all possible subsets(the power set).</strong></p>
+<p><strong>The solution set must not contain duplicate subsets. Return the solution in any order.</strong></p>
+<pre tabindex="0"><code>* Example 1:
+Input: nums = [1,2,3]
+Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]]
+
+* Example 2:
+Input: nums = [0]
+Output: [[],[0]]
+</code></pre><hr>
+<h2 id="解題思路">解題思路：<a hidden class="anchor" aria-hidden="true" href="#解題思路">#</a></h2>
+<p>給定一個list:</p>
+<pre tabindex="0"><code>arr = [1,2]
+</code></pre><p>用一個暫存的<code>subset</code>來存放當前可能的子集合，每個元素都有兩種選擇，要放入<code>subset</code>或是不要放入。</p>
+<pre tabindex="0"><code>				     []
+				   /    \
+				  []    [1]
+				 /  \   /  \
+			        [] [2] [1] [1,2]
+</code></pre><p>從上圖可以看出，每一層都是對於一個元素的取捨，從最上面的元素<code>1</code>開始，選擇左邊的路就是不放入當前元素，右邊的路就是放入，最後生成所有可能的子集</p>
+<h3 id="1-base-case">1. Base case<a hidden class="anchor" aria-hidden="true" href="#1-base-case">#</a></h3>
+<p>因為input是一個array，所以當array走到底時就要跳出，此時也代表走到<strong>這條DFS路線上的終點</strong>，所以可以將當前的<code>subset</code>加入到<code>res</code>當中</p>
+<p>但要注意，必須回傳<code>subset.copy()</code>。假如回傳<code>subset</code>本人，因為list是pass by reference的特性，最後res中的所有結果都會指向同一個<code>subset</code></p>
+<h3 id="2-要或不要加入該元素">2. 要或不要加入該元素<a hidden class="anchor" aria-hidden="true" href="#2-要或不要加入該元素">#</a></h3>
+<p>如果想加入元素，就直接對<code>subset</code> append新的元素即可。但考慮不加入該元素時需要先把該元素pop出去</p>
+<hr>
+<h1 id="程式碼">程式碼：<a hidden class="anchor" aria-hidden="true" href="#程式碼">#</a></h1>
+<pre tabindex="0"><code>class Solution:
+    def subsets(self, nums: List[int]) -&gt; List[List[int]]:
+        res = []
+        subset = []
+
+        def dfs(i):
+            if i &gt;= len(nums):
+                res.append(subset.copy())
+                return
+            
+            # decide to include nums[i]
+            subset.append(nums[i])
+            dfs(i+1)
+
+            # decide not to include nums[i]
+            subset.pop()
+            dfs(i+1)
+
+        dfs(0)
+        return res
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/backtracking/">Backtracking</a></li>
+      <li><a href="http://localhost:1313/blog/tags/dfs/">DFS</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>Climbing the Leaderboard | Lutein 40g</title>
+<meta name="keywords" content="binary search, array">
+<meta name="description" content="前言： 這題來自 HackerRank 的 1 Month Preparation Kit - Week 3，結合了 Leetocde 35. Search Insert Position以及26. Remove Duplicates from Sorted Array兩題的解題套路。
+題目： 題目提到的Dense Ranking指在一數組中，重複的數值會獲得一樣的名次 n，且下一個較小的數值會獲得n&#43;1的名次。
+解題思路： 以題目給的 input 為例：
+ranked = [100, 90, 90, 80] player = [70, 80, 105] 1. 排除重複分數 已知 數組 ranked 中重複的分數獲得的是相同名次，因為有重複分數的緣故，index 與排名無法找出關聯。例如兩個 90 (一個index = 1, 另一個index = 2)在不同的 index 上但排名卻一樣。
+如果將數組濃縮為：
+ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其所在位置的index&#43;1。例如score = 90對應index = 1，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前index即可算出排名。">
+<meta name="author" content="Yang">
+<link rel="canonical" href="http://localhost:1313/blog/post/climbing-the-leaderboard/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css" integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/post/climbing-the-leaderboard/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="Lutein 40g (Alt + H)">Lutein 40g</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      Climbing the Leaderboard
+    </h1>
+    <div class="post-meta">March 18, 2023&amp;nbsp;·&amp;nbsp;Yang
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="前言">前言：<a hidden class="anchor" aria-hidden="true" href="#前言">#</a></h2>
+<p>這題來自 <strong>HackerRank</strong> 的 <strong><em>1 Month Preparation Kit - Week 3</em></strong>，結合了 Leetocde <code>35. Search Insert Position</code>以及<code>26. Remove Duplicates from Sorted Array</code>兩題的解題套路。</p>
+<hr>
+<h2 id="題目">題目：<a hidden class="anchor" aria-hidden="true" href="#題目">#</a></h2>
+<p><img loading="lazy" src="/img/climbing_the_leaderboard.png" alt=""  />
+</p>
+<blockquote>
+<p>題目提到的<strong>Dense Ranking</strong>指在一數組中，重複的數值會獲得一樣的名次 <code>n</code>，且下一個較小的數值會獲得<code>n+1</code>的名次。</p>
+</blockquote>
+<hr>
+<h2 id="解題思路">解題思路：<a hidden class="anchor" aria-hidden="true" href="#解題思路">#</a></h2>
+<p>以題目給的 input 為例：</p>
+<pre tabindex="0"><code>ranked = [100, 90, 90, 80]
+player = [70, 80, 105]
+</code></pre><h3 id="1-排除重複分數">1. 排除重複分數<a hidden class="anchor" aria-hidden="true" href="#1-排除重複分數">#</a></h3>
+<p>已知 數組 ranked 中重複的分數獲得的是相同名次，因為有重複分數的緣故，index 與排名無法找出關聯。例如兩個 90 (一個<code>index = 1</code>, 另一個<code>index = 2</code>)在不同的 index 上但排名卻一樣。</p>
+<p>如果將數組濃縮為：</p>
+<pre tabindex="0"><code>ranked = [100, 90, 80]
+</code></pre><p>則各分數在 leaderboard 中的排名剛好等於其所在位置的<code>index+1</code>。例如<code>score = 90</code>對應<code>index = 1</code>，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前<code>index</code>即可算出排名。</p>
+<h3 id="2-找出適當插隊位置">2. 找出適當插隊位置<a hidden class="anchor" aria-hidden="true" href="#2-找出適當插隊位置">#</a></h3>
+<blockquote>
+<p>想像今天如果要排隊入場遊樂園，且優先順序跟先來後到無關，而是看誰手上的號碼牌數字比較大，握有較大號碼的玩家可以插隊排在數字較小的玩家前面(好不公平阿)。</p>
+</blockquote>
+<p>上述的情境就是我們現在要解決的問題：</p>
+<p>&mdash; <strong>讓新來的玩家拿手上的分數去跟隊伍（ranked）中的分數比較，並找出適合的插隊位置</strong>。</p>
+<p>目前的 input 在濃縮了 ranked 以後變成：</p>
+<pre tabindex="0"><code>ranked = [100, 90, 80]
+player = [70, 80, 105]
+</code></pre><p>例如，考慮第一位玩家 <code>player[0]</code>握有<code>score = 70</code>要加入 ranked 這個數組，最終他應該會被排在 80 後面：</p>
+<pre tabindex="0"><code>ranked = [100, 90, 80, 70]
+</code></pre><p>剛開始看到這樣的問題，最直觀的想法應該是用一個 for 迴圈遍歷數組 ranked，直到找出<strong>第一個</strong> <code>ranked[i] &lt;= score</code> 的元素。</p>
+<p>因為 ranked 為 descending order，所以<strong>第一個<code>ranked[i] &lt;= 70</code> 的元素</strong>是<strong>所有小於等於 score 之中最大的數字</strong>，也就是我們要找的位置：</p>
+<pre tabindex="0"><code>for i in range(len(ranked)):
+	if ranked[i] &lt;= 70:
+		return i
+</code></pre><p>但再仔細想想會發現，如果只是為了找到 <code>ranked[i] &lt;= score</code> 之中最大的數字，檢查整個數組其實有點太多餘，因為跟 score 相比起來太大或太小的數字都不需要被考慮才對。這時候就可以用 binary search 來省略多餘的步驟：</p>
+<pre tabindex="0"><code>l, r = 0, len_ranked - 1
+
+while l &lt; r:
+	mid = (l + r) // 2
+
+	if score &gt;= ranked[mid]:
+		r = mid
+	else:
+		l = mid + 1
+
+if r == len_ranked - 1 and score &lt; ranked[r]:
+	res.append(r + 2)
+else:
+	res.append(r + 1)
+</code></pre><p>寫到這邊其實問題差不多解決了。最後需要注意的是，如果玩家手上握有的分數比整個數組中的所有分數都還小，那此玩家就會被排在數組最後一個元素的後一位;且已知數組最後一個元素的排名為<code>index + 1</code>，則此玩家的排名會是<code>index + 2</code>，例如 <code>score = 50</code>要加入 <code>ranked = [100, 90, 80, 70]</code> 中，會被排在最後一個數字 70 的後面，變成<code>ranked = [100, 90, 80, 70, 50]</code>。</p>
+<p>而其他情況下排名就會是<code>index + 1</code>，例如 <code>score = 80</code>，或是<code>score = 85</code>要加入 <code>ranked = [100, 90, 80, 70]</code> 中，找到的第一個 <code>ranked[i] &lt;= score</code> 的數字是 80，則該 score 可以被排在原本的 80 這個位置上，變成<code>ranked = [100, 90, 85(80), 80, 70]</code>。</p>
+<hr>
+<h1 id="程式碼">程式碼：<a hidden class="anchor" aria-hidden="true" href="#程式碼">#</a></h1>
+<pre tabindex="0"><code>def climbingLeaderboard(ranked, player):
+    # remove duplicates from ranked
+    left = 1
+    for i in range(1, len(ranked)):
+        if ranked[i - 1] != ranked[i]:
+            ranked[left] = ranked[i]
+            left += 1
+    len_ranked = left
+
+    # insert each score in the player list indenpently
+    res = []
+
+    for score in player:
+        l, r = 0, len_ranked -  1
+
+        while l &lt; r:
+            mid = (l + r) // 2
+
+            if score &gt;= ranked[mid]:
+                r = mid
+            else:
+                l = mid + 1
+
+        if r == len_ranked - 1 and score &lt; ranked[r]:
+            res.append(r + 2)
+        else:
+            res.append(r + 1)
+
+    return res
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/binary-search/">Binary Search</a></li>
+      <li><a href="http://localhost:1313/blog/tags/array/">Array</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

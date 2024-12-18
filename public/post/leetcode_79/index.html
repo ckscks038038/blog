@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>79. Word Search | Lutein 40g</title>
+<meta name="keywords" content="tree, backtracking">
+<meta name="description" content="前言： 這題也是經典backtracking套路，可以分層理解。假設大目標是ABCD，那找到A以後，目標變成找BCD，一直延續下去。
+題目： Given an m x n grid of characters board and a string word, return true if word exists in the grid.
+The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
+* Example 1: Input: board = [[&#34;A&#34;,&#34;B&#34;,&#34;C&#34;,&#34;E&#34;], [&#34;S&#34;,&#34;F&#34;,&#34;C&#34;,&#34;S&#34;], [&#34;A&#34;,&#34;D&#34;,&#34;E&#34;,&#34;E&#34;]], word = &#34;ABCCED&#34; Output: true * Example 2: Input: board = [[&#34;A&#34;,&#34;B&#34;,&#34;C&#34;,&#34;E&#34;], [&#34;S&#34;,&#34;F&#34;,&#34;C&#34;,&#34;S&#34;], [&#34;A&#34;,&#34;D&#34;,&#34;E&#34;,&#34;E&#34;]], word = &#34;SEE&#34; Output: true * Example 3: 解題思路： 兩個核心概念，邊界條件以及bfs機制。">
+<meta name="author" content="Yang">
+<link rel="canonical" href="http://localhost:1313/blog/post/leetcode_79/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css" integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/post/leetcode_79/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="Lutein 40g (Alt + H)">Lutein 40g</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      79. Word Search
+    </h1>
+    <div class="post-meta">May 23, 2023&amp;nbsp;·&amp;nbsp;Yang
+
+</div>
+  </header> 
+  <div class="post-content"><h2 id="前言">前言：<a hidden class="anchor" aria-hidden="true" href="#前言">#</a></h2>
+<p>這題也是經典<code>backtracking</code>套路，可以分層理解。假設大目標是<code>ABCD</code>，那找到A以後，目標變成找<code>BCD</code>，一直延續下去。</p>
+<hr>
+<h2 id="題目">題目：<a hidden class="anchor" aria-hidden="true" href="#題目">#</a></h2>
+<p>Given an m x n grid of characters board and a string word, return true if word exists in the grid.</p>
+<p>The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.</p>
+<pre tabindex="0"><code>* Example 1: 
+<figure>
+    <img loading="lazy" src="/img/leetcode_79example_1.png" width="300px"/> 
+</figure>
+
+ Input: board = [[&#34;A&#34;,&#34;B&#34;,&#34;C&#34;,&#34;E&#34;],
+[&#34;S&#34;,&#34;F&#34;,&#34;C&#34;,&#34;S&#34;],
+[&#34;A&#34;,&#34;D&#34;,&#34;E&#34;,&#34;E&#34;]],
+word = &#34;ABCCED&#34;
+Output: true
+
+* Example 2:
+<figure>
+    <img loading="lazy" src="/img/leetcode_79example2.png" width="300px"/> 
+</figure>
+
+Input: board = 
+[[&#34;A&#34;,&#34;B&#34;,&#34;C&#34;,&#34;E&#34;],
+[&#34;S&#34;,&#34;F&#34;,&#34;C&#34;,&#34;S&#34;],
+[&#34;A&#34;,&#34;D&#34;,&#34;E&#34;,&#34;E&#34;]], 
+word = &#34;SEE&#34;
+Output: true
+
+* Example 3:
+</code></pre><hr>
+<h2 id="解題思路">解題思路：<a hidden class="anchor" aria-hidden="true" href="#解題思路">#</a></h2>
+<p>兩個核心概念，邊界條件以及bfs機制。</p>
+<h3 id="1-考慮邊界條件">1. 考慮邊界條件<a hidden class="anchor" aria-hidden="true" href="#1-考慮邊界條件">#</a></h3>
+<p>如果碰到邊界、找到不是當前<code>word[i]</code>的值或是已經重複走過的路，都表示這個path是不通的那就return false</p>
+<pre tabindex="0"><code>if (r &lt; 0 or c &lt; 0 or
+	r &gt;= ROWS or c &gt;= COLS or
+	word[i] != board[r][c] or
+	(r, c) in path):
+	return False
+</code></pre><h3 id="2-用dfs找路徑">2. 用dfs找路徑<a hidden class="anchor" aria-hidden="true" href="#2-用dfs找路徑">#</a></h3>
+<p>看起來比之前複雜，但其實差異只有</p>
+<ul>
+<li>從二元決策樹變成四元決策樹</li>
+<li>需要return 該路徑的成功或失敗</li>
+</ul>
+<p>還記得之前寫<strong>78. Subset</strong>時，在跑dfs是不需要return失敗或成功的，因為只需要把所有可能都列到底，然後全部的可能跑完(<code>i == len(nums)</code>)，就結束了。</p>
+<p>但這次需要判斷input最後的結果是True or False, 所以需要隨時遇到<strong>邊界條件</strong>就先回傳False</p>
+<pre tabindex="0"><code>path.add((r, c))
+res = (dfs(r + 1, c, i + 1) or
+	dfs(r - 1, c, i + 1) or
+	dfs(r, c + 1, i + 1) or
+	dfs(r, c - 1, i + 1))
+path.remove((r, c))
+return res
+</code></pre><hr>
+<h1 id="程式碼">程式碼：<a hidden class="anchor" aria-hidden="true" href="#程式碼">#</a></h1>
+<pre tabindex="0"><code>class Solution:
+    def exist(self, board: List[List[str]], word: str) -&gt; bool:
+        ROWS, COLS = len(board), len(board[0])
+        path = set()
+
+        def dfs(r, c, i):
+            if i == len(word):
+                return True
+            if (r &lt; 0 or c &lt; 0 or
+                r &gt;= ROWS or c &gt;= COLS or
+                word[i] != board[r][c] or
+                (r, c) in path):
+                return False
+
+            path.add((r, c))
+            res = (dfs(r + 1, c, i + 1) or
+                   dfs(r - 1, c, i + 1) or
+                   dfs(r, c + 1, i + 1) or
+                   dfs(r, c - 1, i + 1))
+            path.remove((r, c))
+            return res
+        
+        for r in range(ROWS):
+            for c in range(COLS):
+                if dfs(r, c, 0): return True
+        return False
+</code></pre>
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/tree/">Tree</a></li>
+      <li><a href="http://localhost:1313/blog/tags/backtracking/">Backtracking</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>
