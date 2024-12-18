@@ -31,7 +31,7 @@ params:
         enabled: true
         title: "Lutein 40g" # optional default will be site title
         subtitle: "This is subtitle"
-        imageUrl: "/img/keyboard.png" # optional
+        imageUrl: "/static/img/keyboard.png"
         imageTitle: "<title of image as alt>" # optional
         imageWidth: 200 # custom size
         imageHeight: 200 # custom size
