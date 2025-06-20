@@ -1,263 +1,159 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Posts on Lutein 40g</title>
     <link>http://localhost:1313/blog/post/</link>
     <description>Recent content in Posts on Lutein 40g</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 18 Dec 2024 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 May 2025 19:33:00 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>do it.</title>
+      <link>http://localhost:1313/blog/post/journal-05192025/</link>
+      <pubDate>Sun, 18 May 2025 19:33:00 +0800</pubDate>
+      <guid>http://localhost:1313/blog/post/journal-05192025/</guid>
+      <description>Preface I am not sure if the preface would exist in the following posts. The reason why here&amp;rsquo;s a preface is because I decided to start jotting down my feeling and thoughts, and I hope this preface is used as a anchor expalining the beginning for everthing in the future.&#xA;I was kind of lost after failing the interview with Bloomberg. It felt like all the drive and hope was disappear after all that.</description>
+    </item>
+    <item>
+      <title>What is rm -rf?</title>
+      <link>http://localhost:1313/blog/post/linux_command_rm/</link>
+      <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/blog/post/linux_command_rm/</guid>
+      <description>I use a lot of Linux commands within my Ubuntu environment, and one of the most frequently used commands is rm -rf. I don&amp;rsquo;t even remember why I started using it. The only thing I can recall is that -r stands for recursive and -f stands for force. This is a pretty brutal command, as it deletes everything following the command without a blink of an eye.&#xA;To be a more sophisticated engineer, I decide to break it down:</description>
+    </item>
     <item>
       <title>Member Initializer List</title>
       <link>http://localhost:1313/blog/post/member_initializer_list/</link>
       <pubDate>Wed, 18 Dec 2024 00:00:00 +0000</pubDate>
-      
       <guid>http://localhost:1313/blog/post/member_initializer_list/</guid>
-      <description>Initialization vs. Assignment in Constructor Member Initializer List class Example { int* m_ptr; public: Example(int* ptr = nullptr) : m_ptr(ptr) { // Member variable m_ptr is initialized directly } }; Initialization happens once during object creation.
-More efficient, especially for complex types.
-Required for const and reference members:
-class Example { const int m_value; public: Example(int value) : m_value(value) {} // Must use initializer list }; Assignment in Constructor Body class Example { int* m_ptr; public: Example(int* ptr = nullptr) { m_ptr = ptr; // m_ptr is default-initialized, then assigned } }; Involves default initialization followed by assignment.</description>
+      <description>Initialization vs. Assignment in Constructor Member Initializer List class Example { int* m_ptr; public: Example(int* ptr = nullptr) : m_ptr(ptr) { // Member variable m_ptr is initialized directly } }; Initialization happens once during object creation.&#xA;More efficient, especially for complex types.&#xA;Required for const and reference members:&#xA;class Example { const int m_value; public: Example(int value) : m_value(value) {} // Must use initializer list }; Assignment in Constructor Body class Example { int* m_ptr; public: Example(int* ptr = nullptr) { m_ptr = ptr; // m_ptr is default-initialized, then assigned } }; Involves default initialization followed by assignment.</description>
     </item>
-    
     <item>
       <title>Milestones for a New Backend Engineer: From PRs to Platform Mastery</title>
       <link>http://localhost:1313/blog/post/test/</link>
       <pubDate>Fri, 07 Jul 2023 01:35:03 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/test/</guid>
-      <description>I have been working as a software developer for over 6 months now. Since I work fully remotely, which requires self-discipline and good time management, I sometimes feel unsure about whether I am doing well as a newbie.
-Today, I randomly came across an interesting job description for a backend developer position at a company called Teal. It outlines the roadmap for a new backend developer:
-At day 1:
-You&amp;rsquo;ve made your first pull request, perhaps a missing test, or readme improvement.</description>
+      <description>I have been working as a software developer for over 6 months now. Since I work fully remotely, which requires self-discipline and good time management, I sometimes feel unsure about whether I am doing well as a newbie.&#xA;Today, I randomly came across an interesting job description for a backend developer position at a company called Teal. It outlines the roadmap for a new backend developer:&#xA;At day 1:&#xA;You&amp;rsquo;ve made your first pull request, perhaps a missing test, or readme improvement.</description>
     </item>
-    
     <item>
       <title>51. N-Queens </title>
       <link>http://localhost:1313/blog/post/leetcode_51/</link>
       <pubDate>Tue, 30 May 2023 01:18:40 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_51/</guid>
-      <description>前言： 在完成這題之前看了很多影片教學，下述幾個影片是我覺得對理解backtracking非常有幫助的：
-印度老哥圖解方法，用tree來呈現整個回溯過程 這次官神的解法比neetcode更好理解 題目： * Example 1: * Example 2: * Example 3: 解題思路： 1. 2. 程式碼： </description>
+      <description>前言： 在完成這題之前看了很多影片教學，下述幾個影片是我覺得對理解backtracking非常有幫助的：&#xA;印度老哥圖解方法，用tree來呈現整個回溯過程 這次官神的解法比neetcode更好理解 題目： * Example 1: * Example 2: * Example 3: 解題思路： 1. 2. 程式碼： </description>
     </item>
-    
     <item>
       <title>17. Letter Combinations of a Phone Number</title>
       <link>http://localhost:1313/blog/post/leetcode_17/</link>
       <pubDate>Wed, 24 May 2023 00:19:06 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_17/</guid>
-      <description>前言： 這題應該是backtracking寫到現在最簡單的一題，不需要考慮pop()，只管把所有可能列出來即可。
-題目： Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.
-A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.
-解題思路： 看著圖片，把所有可能按照給的digits依序append()到curStr即可
-唯一需要注意的是，如果遇到空字串digits = &amp;quot;&amp;quot;，需要return 的是空list[]，但進入迴圈的話會在一開始就append一個&amp;quot;&amp;quot;
-為了避免此問題要先判斷digits是否為空字串
-程式碼： class Solution: def letterCombinations(self, digits: str) -&amp;gt; List[str]: res = [] map = { &amp;#34;2&amp;#34;:&amp;#34;abc&amp;#34;, &amp;#34;3&amp;#34;:&amp;#34;def&amp;#34;, &amp;#34;4&amp;#34;:&amp;#34;ghi&amp;#34;, &amp;#34;5&amp;#34;:&amp;#34;jkl&amp;#34;, &amp;#34;6&amp;#34;:&amp;#34;mno&amp;#34;, &amp;#34;7&amp;#34;:&amp;#34;pqrs&amp;#34;, &amp;#34;8&amp;#34;:&amp;#34;tuv&amp;#34;, &amp;#34;9&amp;#34;:&amp;#34;wxyz&amp;#34;, } def dfs(curStr, i): if i &amp;gt;= len(digits): res.</description>
+      <description>前言： 這題應該是backtracking寫到現在最簡單的一題，不需要考慮pop()，只管把所有可能列出來即可。&#xA;題目： Given a string containing digits from 2-9 inclusive, return all possible letter combinations that the number could represent. Return the answer in any order.&#xA;A mapping of digits to letters (just like on the telephone buttons) is given below. Note that 1 does not map to any letters.&#xA;解題思路： 看著圖片，把所有可能按照給的digits依序append()到curStr即可&#xA;唯一需要注意的是，如果遇到空字串digits = &amp;quot;&amp;quot;，需要return 的是空list[]，但進入迴圈的話會在一開始就append一個&amp;quot;&amp;quot;&#xA;為了避免此問題要先判斷digits是否為空字串&#xA;程式碼： class Solution: def letterCombinations(self, digits: str) -&amp;gt; List[str]: res = [] map = { &amp;#34;2&amp;#34;:&amp;#34;abc&amp;#34;, &amp;#34;3&amp;#34;:&amp;#34;def&amp;#34;, &amp;#34;4&amp;#34;:&amp;#34;ghi&amp;#34;, &amp;#34;5&amp;#34;:&amp;#34;jkl&amp;#34;, &amp;#34;6&amp;#34;:&amp;#34;mno&amp;#34;, &amp;#34;7&amp;#34;:&amp;#34;pqrs&amp;#34;, &amp;#34;8&amp;#34;:&amp;#34;tuv&amp;#34;, &amp;#34;9&amp;#34;:&amp;#34;wxyz&amp;#34;, } def dfs(curStr, i): if i &amp;gt;= len(digits): res.</description>
     </item>
-    
     <item>
       <title>79. Word Search</title>
       <link>http://localhost:1313/blog/post/leetcode_79/</link>
       <pubDate>Tue, 23 May 2023 22:44:27 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_79/</guid>
-      <description>前言： 這題也是經典backtracking套路，可以分層理解。假設大目標是ABCD，那找到A以後，目標變成找BCD，一直延續下去。
-題目： Given an m x n grid of characters board and a string word, return true if word exists in the grid.
-The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
-* Example 1: Input: board = [[&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;E&amp;#34;], [&amp;#34;S&amp;#34;,&amp;#34;F&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;S&amp;#34;], [&amp;#34;A&amp;#34;,&amp;#34;D&amp;#34;,&amp;#34;E&amp;#34;,&amp;#34;E&amp;#34;]], word = &amp;#34;ABCCED&amp;#34; Output: true * Example 2: Input: board = [[&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;E&amp;#34;], [&amp;#34;S&amp;#34;,&amp;#34;F&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;S&amp;#34;], [&amp;#34;A&amp;#34;,&amp;#34;D&amp;#34;,&amp;#34;E&amp;#34;,&amp;#34;E&amp;#34;]], word = &amp;#34;SEE&amp;#34; Output: true * Example 3: 解題思路： 兩個核心概念，邊界條件以及bfs機制。</description>
+      <description>前言： 這題也是經典backtracking套路，可以分層理解。假設大目標是ABCD，那找到A以後，目標變成找BCD，一直延續下去。&#xA;題目： Given an m x n grid of characters board and a string word, return true if word exists in the grid.&#xA;The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.&#xA;* Example 1: Input: board = [[&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;E&amp;#34;], [&amp;#34;S&amp;#34;,&amp;#34;F&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;S&amp;#34;], [&amp;#34;A&amp;#34;,&amp;#34;D&amp;#34;,&amp;#34;E&amp;#34;,&amp;#34;E&amp;#34;]], word = &amp;#34;ABCCED&amp;#34; Output: true * Example 2: Input: board = [[&amp;#34;A&amp;#34;,&amp;#34;B&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;E&amp;#34;], [&amp;#34;S&amp;#34;,&amp;#34;F&amp;#34;,&amp;#34;C&amp;#34;,&amp;#34;S&amp;#34;], [&amp;#34;A&amp;#34;,&amp;#34;D&amp;#34;,&amp;#34;E&amp;#34;,&amp;#34;E&amp;#34;]], word = &amp;#34;SEE&amp;#34; Output: true * Example 3: 解題思路： 兩個核心概念，邊界條件以及bfs機制。</description>
     </item>
-    
     <item>
       <title>131. Palindrome Partitioning</title>
       <link>http://localhost:1313/blog/post/leetcode_131/</link>
       <pubDate>Mon, 22 May 2023 23:40:03 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_131/</guid>
-      <description>前言： 一開始看很難，但其實是很典型的backtracking套路，不要想一次把整個遞迴結構想出來，應該以單層的角度，把下面子問題抽象來看。
-題目： Given a string s, partition s such that every substring of the partition is a palindrome . Return all possible palindrome partitioning of s.
-* Example 1: Input: s = &amp;#34;aab&amp;#34; Output: [[&amp;#34;a&amp;#34;,&amp;#34;a&amp;#34;,&amp;#34;b&amp;#34;],[&amp;#34;aa&amp;#34;,&amp;#34;b&amp;#34;]] * Example 2: Input: s = &amp;#34;a&amp;#34; Output: [[&amp;#34;a&amp;#34;]] 解題思路： 這題也是決策樹問題，把圖畫出來如上。
-1. 第一部份 字串aab在進入for迴圈可以將整個字串s切成兩一部份。
-第一部份又可以分為三種可能：
-i: 0 -&amp;gt; 0: &amp;quot;a&amp;quot; i: 0 -&amp;gt; 1: &amp;quot;aa&amp;quot; i: 0 -&amp;gt; 2: &amp;quot;aab&amp;quot; 接著判斷是否第一部份為回文，是的話進入第二部份，並且將子字串加入part; 不是的話則不繼續往下找
-for j in range(i, len(s)): if self.</description>
+      <description>前言： 一開始看很難，但其實是很典型的backtracking套路，不要想一次把整個遞迴結構想出來，應該以單層的角度，把下面子問題抽象來看。&#xA;題目： Given a string s, partition s such that every substring of the partition is a palindrome . Return all possible palindrome partitioning of s.&#xA;* Example 1: Input: s = &amp;#34;aab&amp;#34; Output: [[&amp;#34;a&amp;#34;,&amp;#34;a&amp;#34;,&amp;#34;b&amp;#34;],[&amp;#34;aa&amp;#34;,&amp;#34;b&amp;#34;]] * Example 2: Input: s = &amp;#34;a&amp;#34; Output: [[&amp;#34;a&amp;#34;]] 解題思路： 這題也是決策樹問題，把圖畫出來如上。&#xA;1. 第一部份 字串aab在進入for迴圈可以將整個字串s切成兩一部份。&#xA;第一部份又可以分為三種可能：&#xA;i: 0 -&amp;gt; 0: &amp;quot;a&amp;quot; i: 0 -&amp;gt; 1: &amp;quot;aa&amp;quot; i: 0 -&amp;gt; 2: &amp;quot;aab&amp;quot; 接著判斷是否第一部份為回文，是的話進入第二部份，並且將子字串加入part; 不是的話則不繼續往下找&#xA;for j in range(i, len(s)): if self.</description>
     </item>
-    
     <item>
       <title>40. Combination Sum II</title>
       <link>http://localhost:1313/blog/post/leetcode_40/</link>
       <pubDate>Fri, 19 May 2023 22:44:45 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_40/</guid>
-      <description>前言： 這題跟剛剛做完的90. Subsets II 解法幾乎完全一樣，只差了這次需要考慮total，但值得注意的是，兩個題目是完全不同的呈現，所以有時仔細思考後，會發現不同問題其實本質是一致的。
-另外，這次neetcode是用for迴圈解，我現在覺得決策樹問題用dfs思考會比較直觀，所以就用了底下留言給的程式碼做參考。
-題目： Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
-Each number in candidates may only be used once in the combination.
-Note: The solution set must not contain duplicate combinations.
-* Example 1: Input: candidates = [10,1,2,7,6,1,5], target = 8 Output: [ [1,1,6], [1,2,5], [1,7], [2,6] ] * Example 2: Input: candidates = [2,5,2,1,2], target = 5 Output: [ [1,2,2], [5] ] 解題思路： 1.</description>
+      <description>前言： 這題跟剛剛做完的90. Subsets II 解法幾乎完全一樣，只差了這次需要考慮total，但值得注意的是，兩個題目是完全不同的呈現，所以有時仔細思考後，會發現不同問題其實本質是一致的。&#xA;另外，這次neetcode是用for迴圈解，我現在覺得決策樹問題用dfs思考會比較直觀，所以就用了底下留言給的程式碼做參考。&#xA;題目： Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.&#xA;Each number in candidates may only be used once in the combination.&#xA;Note: The solution set must not contain duplicate combinations.&#xA;* Example 1: Input: candidates = [10,1,2,7,6,1,5], target = 8 Output: [ [1,1,6], [1,2,5], [1,7], [2,6] ] * Example 2: Input: candidates = [2,5,2,1,2], target = 5 Output: [ [1,2,2], [5] ] 解題思路： 1.</description>
     </item>
-    
     <item>
       <title>90. Subsets II</title>
       <link>http://localhost:1313/blog/post/leetcode_90/</link>
       <pubDate>Fri, 19 May 2023 16:24:10 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_90/</guid>
-      <description>前言： 這題跟78. Subsets 是幾乎一樣的問題，唯一的差別是這題給的input nums會有重複元素出現，但是output res不可有重複組合。
-題目： Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
-The solution set must not contain duplicate subsets. Return the solution in any order.
-* Example 1: Input: nums = [1,2,2] Output: [[],[1],[1,2],[1,2,2],[2],[2,2]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 一樣用決策樹的思路，一邊是放入當前元素、另一邊是不放入當前元素，只是放入如果已經放入了nums[i](#1)，在pop()後並且跳過nums[i]，打算在下次考慮nums[i+1]前，要先判斷目前的nums[i]與nums[i+1]是否一樣，如果一樣的話就跳過。這樣才可避免走到跟 #1 一樣的決策情況。
-一樣，決策的題目畫出決策樹是最好理解的。
-程式碼： class Solution: def subsetsWithDup(self, nums: List[int]) -&amp;gt; List[List[int]]: res = [] nums.</description>
+      <description>前言： 這題跟78. Subsets 是幾乎一樣的問題，唯一的差別是這題給的input nums會有重複元素出現，但是output res不可有重複組合。&#xA;題目： Given an integer array nums that may contain duplicates, return all possible subsets (the power set).&#xA;The solution set must not contain duplicate subsets. Return the solution in any order.&#xA;* Example 1: Input: nums = [1,2,2] Output: [[],[1],[1,2],[1,2,2],[2],[2,2]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 一樣用決策樹的思路，一邊是放入當前元素、另一邊是不放入當前元素，只是放入如果已經放入了nums[i](#1)，在pop()後並且跳過nums[i]，打算在下次考慮nums[i+1]前，要先判斷目前的nums[i]與nums[i+1]是否一樣，如果一樣的話就跳過。這樣才可避免走到跟 #1 一樣的決策情況。&#xA;一樣，決策的題目畫出決策樹是最好理解的。&#xA;程式碼： class Solution: def subsetsWithDup(self, nums: List[int]) -&amp;gt; List[List[int]]: res = [] nums.</description>
     </item>
-    
     <item>
       <title>46. Permutations</title>
       <link>http://localhost:1313/blog/post/leetcode_46/</link>
       <pubDate>Fri, 19 May 2023 01:40:26 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_46/</guid>
-      <description>前言： 這題看neetcode的作法感覺像是逆序而行，不太直觀，目前為止還沒看懂。先以之前寫過的解法來做題，下次再做到這題再用neetcode的解法試試。
-題目： Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
-* Example 1: Input: nums = [1,2,3] Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] * Example 2: Input: nums = [0,1] Output: [[0,1],[1,0]] * Example 3: Input: nums = [1] Output: [[1]] 解題思路： 假設一開始組合為空，那就是用for迴圈考慮當前的所有選擇，進入每個選擇時都先將當前的元素加入組合中，並且把當前數字移除，使得之後可以考慮的數字剩下除了剛剛加入的元素之外的所有元素，接著再重新進入下一個迴圈
-1. Base case 當目前組合的長度已經等於原本nums的長度，則表示已經選完所有數字，即將當前組合append到res中
-程式碼： class Solution: def permute(self, nums: List[int]) -&amp;gt; List[List[int]]: res = [] comb = [] n = len(nums) def backtracking(nums): if len(comb) == n: res.</description>
+      <description>前言： 這題看neetcode的作法感覺像是逆序而行，不太直觀，目前為止還沒看懂。先以之前寫過的解法來做題，下次再做到這題再用neetcode的解法試試。&#xA;題目： Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.&#xA;* Example 1: Input: nums = [1,2,3] Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] * Example 2: Input: nums = [0,1] Output: [[0,1],[1,0]] * Example 3: Input: nums = [1] Output: [[1]] 解題思路： 假設一開始組合為空，那就是用for迴圈考慮當前的所有選擇，進入每個選擇時都先將當前的元素加入組合中，並且把當前數字移除，使得之後可以考慮的數字剩下除了剛剛加入的元素之外的所有元素，接著再重新進入下一個迴圈&#xA;1. Base case 當目前組合的長度已經等於原本nums的長度，則表示已經選完所有數字，即將當前組合append到res中&#xA;程式碼： class Solution: def permute(self, nums: List[int]) -&amp;gt; List[List[int]]: res = [] comb = [] n = len(nums) def backtracking(nums): if len(comb) == n: res.</description>
     </item>
-    
     <item>
       <title>39. Combination Sum </title>
       <link>http://localhost:1313/blog/post/leetcode_39/</link>
       <pubDate>Fri, 19 May 2023 01:07:13 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_39/</guid>
-      <description>前言： 這題的決策樹(decision tree)比較比較特別，左邊代表繼續選原本的，右邊代表啥都不選，就給你空著。只要把這個概念想清楚，這題也就迎刃而解了。
-題目： Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
-The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.</description>
+      <description>前言： 這題的決策樹(decision tree)比較比較特別，左邊代表繼續選原本的，右邊代表啥都不選，就給你空著。只要把這個概念想清楚，這題也就迎刃而解了。&#xA;題目： Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.&#xA;The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.</description>
     </item>
-    
     <item>
       <title>78. Subsets</title>
       <link>http://localhost:1313/blog/post/leetcode_78/</link>
       <pubDate>Wed, 17 May 2023 01:26:32 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_78/</guid>
-      <description>前言： 這題在school也有寫過，當時還負責主講，沒想到時到今日全都忘光了。這次看neetcode的作法選用DFS，赫然發現這是一個更好的作法。
-題目： Given an integer array nums of unique elements, return all possible subsets(the power set).
-The solution set must not contain duplicate subsets. Return the solution in any order.
-* Example 1: Input: nums = [1,2,3] Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 給定一個list:
-arr = [1,2] 用一個暫存的subset來存放當前可能的子集合，每個元素都有兩種選擇，要放入subset或是不要放入。
-[] / \ [] [1] / \ / \ [] [2] [1] [1,2] 從上圖可以看出，每一層都是對於一個元素的取捨，從最上面的元素1開始，選擇左邊的路就是不放入當前元素，右邊的路就是放入，最後生成所有可能的子集
-1. Base case 因為input是一個array，所以當array走到底時就要跳出，此時也代表走到這條DFS路線上的終點，所以可以將當前的subset加入到res當中</description>
+      <description>前言： 這題在school也有寫過，當時還負責主講，沒想到時到今日全都忘光了。這次看neetcode的作法選用DFS，赫然發現這是一個更好的作法。&#xA;題目： Given an integer array nums of unique elements, return all possible subsets(the power set).&#xA;The solution set must not contain duplicate subsets. Return the solution in any order.&#xA;* Example 1: Input: nums = [1,2,3] Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 給定一個list:&#xA;arr = [1,2] 用一個暫存的subset來存放當前可能的子集合，每個元素都有兩種選擇，要放入subset或是不要放入。&#xA;[] / \ [] [1] / \ / \ [] [2] [1] [1,2] 從上圖可以看出，每一層都是對於一個元素的取捨，從最上面的元素1開始，選擇左邊的路就是不放入當前元素，右邊的路就是放入，最後生成所有可能的子集&#xA;1. Base case 因為input是一個array，所以當array走到底時就要跳出，此時也代表走到這條DFS路線上的終點，所以可以將當前的subset加入到res當中</description>
     </item>
-    
     <item>
       <title>297. Serialize and Deserialize Binary Tree</title>
       <link>http://localhost:1313/blog/post/leetcode_297/</link>
       <pubDate>Wed, 17 May 2023 00:38:17 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_297/</guid>
-      <description>前言： 這題用DFS或BFS來做serialize跟deserialize，但因為DFS比較容易想，code也比較少，就選擇用DFS來寫。
-題目： Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
-Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</description>
+      <description>前言： 這題用DFS或BFS來做serialize跟deserialize，但因為DFS比較容易想，code也比較少，就選擇用DFS來寫。&#xA;題目： Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.&#xA;Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</description>
     </item>
-    
     <item>
       <title>124. Binary Tree Maximum Path Sum</title>
       <link>http://localhost:1313/blog/post/leetcode_124/</link>
       <pubDate>Wed, 17 May 2023 00:06:44 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_124/</guid>
-      <description>前言： 這題雖然是hard，但看完山景城跟neetcode的解釋後便頓然開悟，比起前幾題，124反而在解題方向上更明確。 做完這題應該要去做leetcode_543，解題思路幾乎相同。
-題目： A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.
-The path sum of a path is the sum of the node&amp;rsquo;s values in the path.
-Given the root of a binary tree, return the maximum path sum of any non-empty path.</description>
+      <description>前言： 這題雖然是hard，但看完山景城跟neetcode的解釋後便頓然開悟，比起前幾題，124反而在解題方向上更明確。 做完這題應該要去做leetcode_543，解題思路幾乎相同。&#xA;題目： A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.&#xA;The path sum of a path is the sum of the node&amp;rsquo;s values in the path.&#xA;Given the root of a binary tree, return the maximum path sum of any non-empty path.</description>
     </item>
-    
     <item>
       <title>105. Construct Binary Tree from Preorder and Inorder Traversal</title>
       <link>http://localhost:1313/blog/post/leetcode_105/</link>
       <pubDate>Tue, 16 May 2023 20:19:20 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_105/</guid>
-      <description>前言： 這題目考研寫過，但只要一步一步想就可以得到結果。這次用遞迴實作才發現其實很難。
-題目： Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.
-* Example 1: Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7] Output: [3,9,20,null,null,15,7] * Example 2: Input: preorder = [-1], inorder = [-1] Output: [-1] 解題思路： 先備條件為：所有list中元素都是唯一的。
-Preorder list中，第一個元素必定是root node，此時就可以先create一個node作為出發點，繼續生成他的左子樹與右子樹 接著看到Inorder list，可以透過剛剛找到的root node來找出root node在Inorder中的位置(index)，而且這個index非常重要，它代表root node左子樹中所有node的總數量。所以如果index=3，就表示剛剛找到的root node的左子樹一共有三個節點。 在得到index後，回到Preorder，從剛剛建立好的root node往右走index步，就是左子樹於Preorder中最後一個元素，index+1開始接著就都是右子樹的元素了 而此時Inorder中，index+1開始也都是右子樹的元素 1.</description>
+      <description>前言： 這題目考研寫過，但只要一步一步想就可以得到結果。這次用遞迴實作才發現其實很難。&#xA;題目： Given two integer arrays preorder and inorder where preorder is the preorder traversal of a binary tree and inorder is the inorder traversal of the same tree, construct and return the binary tree.&#xA;* Example 1: Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7] Output: [3,9,20,null,null,15,7] * Example 2: Input: preorder = [-1], inorder = [-1] Output: [-1] 解題思路： 先備條件為：所有list中元素都是唯一的。&#xA;Preorder list中，第一個元素必定是root node，此時就可以先create一個node作為出發點，繼續生成他的左子樹與右子樹 接著看到Inorder list，可以透過剛剛找到的root node來找出root node在Inorder中的位置(index)，而且這個index非常重要，它代表root node左子樹中所有node的總數量。所以如果index=3，就表示剛剛找到的root node的左子樹一共有三個節點。 在得到index後，回到Preorder，從剛剛建立好的root node往右走index步，就是左子樹於Preorder中最後一個元素，index+1開始接著就都是右子樹的元素了 而此時Inorder中，index+1開始也都是右子樹的元素 1.</description>
     </item>
-    
     <item>
       <title>1448. Count Good Nodes in Binary Tree</title>
       <link>http://localhost:1313/blog/post/leetcode_1448/</link>
       <pubDate>Tue, 16 May 2023 19:33:00 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_1448/</guid>
-      <description>前言： 這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個非null節點都被當作參數call一次DFS
-這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成process跟iterative call兩部份)，再來改process確切要做什麼、以及iterative call的return value要如何處理。
-題目： Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.
-Return the number of good nodes in the binary tree.
-* Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node.</description>
+      <description>前言： 這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個非null節點都被當作參數call一次DFS&#xA;這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成process跟iterative call兩部份)，再來改process確切要做什麼、以及iterative call的return value要如何處理。&#xA;題目： Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.&#xA;Return the number of good nodes in the binary tree.&#xA;* Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node.</description>
     </item>
-    
     <item>
       <title>199. Binary Tree Right Side View</title>
       <link>http://localhost:1313/blog/post/leetcode_199/</link>
       <pubDate>Tue, 16 May 2023 00:17:01 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_199/</guid>
-      <description>前言： 這題BFS觀念 level order traveral, 學習如何在python中使用deque來解決BFS問題，並且學習在traversal時考慮子節點有null的情況
-題目： Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
-* Example 1: Input: root = [1,2,3,null,5,null,4] Output: [1,3,4] * Example 2: Input: root = [1,null,3] Output: [1,3] * Example 3: Input: root = [] Output: [] 解題思路： 如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。
-1. 創建deque, 比list更適合 為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用popleft()以及append達成兩個要求。</description>
+      <description>前言： 這題BFS觀念 level order traveral, 學習如何在python中使用deque來解決BFS問題，並且學習在traversal時考慮子節點有null的情況&#xA;題目： Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.&#xA;* Example 1: Input: root = [1,2,3,null,5,null,4] Output: [1,3,4] * Example 2: Input: root = [1,null,3] Output: [1,3] * Example 3: Input: root = [] Output: [] 解題思路： 如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。&#xA;1. 創建deque, 比list更適合 為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用popleft()以及append達成兩個要求。</description>
     </item>
-    
     <item>
       <title>110. Balanced Binary Tree</title>
       <link>http://localhost:1313/blog/post/leetcode-110/</link>
       <pubDate>Mon, 10 Apr 2023 00:39:24 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode-110/</guid>
-      <description>前言： 這題被歸類為 easy，但目前一刷完體感上，並沒有很直覺地理解遞迴，要再多 trace 才可以體會 dfs 在這的含意(也可能我還沒有透徹搞懂 dfs)
-題目： 給一個 binary tree，回傳該樹是否 balanced
-解題思路： 1. 暴力解： 從 root node 開始，算出其左子樹與右子樹的長度，比較兩者長度相減的絕對值是否有&amp;lt;=1，如果有則對其左子樹與右子樹重複此動作直接走完所有 node，否則回傳 False
-&amp;mdash; 此法可解(參考賈考博)，但因為每次都需要重複走過所有子節點，所以直接複雜度是 O(n^2)。
-2. 最優解： 暴力解的思路是由上往下，才會重複 traverse 位於下方的子節點們，那麼這次就從下往上 traverse，這樣每個子節點只需要經過一次，並且往上傳遞兩個資訊:
-是否 balanced 高度 對每個子節點而言，都可以把自己視為當前的 root node，然後來檢查自己是否 balanced，以及自己的高度是多少。假設身為 left node，它的高度與 right node 的高度符合 balanced tree 的要求： abs(height[left] - height[right]) &amp;lt;= 1，也保證整棵樹是平衡的，因為 left node 或是 right node 自己可能就是 unbalanced tree(樹高跟是否 balanced 無關唷)。
-因此，對於當前的 root node 而言，除了要檢查左右子樹的樹高是否平衡，也要檢查兩者自己本身是否是平衡的。
-程式碼： 暴力解： class Solution: def isBalanced(self, root: TreeNode) -&amp;gt; bool: if root is None: return True leftHeight = self.</description>
+      <description>前言： 這題被歸類為 easy，但目前一刷完體感上，並沒有很直覺地理解遞迴，要再多 trace 才可以體會 dfs 在這的含意(也可能我還沒有透徹搞懂 dfs)&#xA;題目： 給一個 binary tree，回傳該樹是否 balanced&#xA;解題思路： 1. 暴力解： 從 root node 開始，算出其左子樹與右子樹的長度，比較兩者長度相減的絕對值是否有&amp;lt;=1，如果有則對其左子樹與右子樹重複此動作直接走完所有 node，否則回傳 False&#xA;&amp;mdash; 此法可解(參考賈考博)，但因為每次都需要重複走過所有子節點，所以直接複雜度是 O(n^2)。&#xA;2. 最優解： 暴力解的思路是由上往下，才會重複 traverse 位於下方的子節點們，那麼這次就從下往上 traverse，這樣每個子節點只需要經過一次，並且往上傳遞兩個資訊:&#xA;是否 balanced 高度 對每個子節點而言，都可以把自己視為當前的 root node，然後來檢查自己是否 balanced，以及自己的高度是多少。假設身為 left node，它的高度與 right node 的高度符合 balanced tree 的要求： abs(height[left] - height[right]) &amp;lt;= 1，也保證整棵樹是平衡的，因為 left node 或是 right node 自己可能就是 unbalanced tree(樹高跟是否 balanced 無關唷)。&#xA;因此，對於當前的 root node 而言，除了要檢查左右子樹的樹高是否平衡，也要檢查兩者自己本身是否是平衡的。&#xA;程式碼： 暴力解： class Solution: def isBalanced(self, root: TreeNode) -&amp;gt; bool: if root is None: return True leftHeight = self.</description>
     </item>
-    
     <item>
       <title>TOEFL Preparation Part 1</title>
       <link>http://localhost:1313/blog/post/toefl01/</link>
       <pubDate>Sun, 19 Mar 2023 14:08:26 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/toefl01/</guid>
-      <description>前言 在說一點什麼之前，先上成績！
-Date Total Reading Listening Speaking Writing 20220723 62 17 16 15 14 20221029 84 18 26 19 21 20221203 84 19 23 23 19 20230107 86 24 18 22 22 20230211 96 29 23 22 22 其實從2022年初就報名了考試，但因為各種拖延逃避一直到了七月才硬著頭皮考了第一次，基本上只寫過幾回閱讀和聽力，四捨五入就當作裸考，結果也是可想而知的慘烈。接下來又經過了一陣子的自我懷疑、徬徨的低潮期，實際認真開始準備是九月左右，到2023二月的最後一戰，準備時間大概是半年，接下來就分為幾個部份來細說半年來跟托福戰鬥史！
-背景 過去一直把自己定義為英文弱底，升學時英文是我最害怕的一個學科，學測的13級分是在補習班每天單字小考加上文法講義硬讀出來的，當時覺得這已經是我的英文極限了(？)上大學後除了原文書外基本上沒有在接觸英文，甚至連多益都沒有考過，大學的英文畢業門檻是用修課抵掉的，因此一戰的62分可以直接當作準備前的程度 。
-釐清目的、目標 目的 這次考托福的原因是為了準備出國留學，但不管是什麼原因，決定要考試後就不留任何餘地給自己了！
-目標 以留學來說，訂定目標成績的因素有以下幾個：
-1. 國家、科系的要求門檻 2. 本身程度 3. 準備時間 我主要申請的國家與領域是美國的Computer Science，大多數查到的建議門檻為100，但考量到有限的時間以及有限的程度，我給自己的目標是95分，最初預期的準備時間為3個月，希望能在2022的12月前解決，可以接著專心準備其他申請文書，但後來的好幾戰又是另一個故事了&amp;hellip;
-怎麼開始叻 下定決心 首先要知道自己沒有退路，而實際把後路砍斷的方法，就是馬上報名考試！貴到不行的報名費會讓決心蹭蹭的往上升。
-蒐集資料 在正式開始唸書之前，可以花個幾天蒐集資料，以下列出幾種必須的內建資料庫：
-1. 考試的詳細內容、時長等等資訊 2. 各種備考心得（PTT、Dcard、Medium、Youtube、Bilibili、一畝三分地） 大量去看各種備考心得，在練習的過程中實際去嘗試，找到能有感提升分數的方法。
-3. 免費線上課程（Youtube、Bilibili） 若是文章或簡略的方法太過抽象，也可以找到許多英文老師的教學影片，例如實際演練做題、抄筆記、題目講解等，過去許多只能在補習班或付費課程看到的內容，都能在免費的影音平台看到。
-練習素材 1. TPO 模擬考題</description>
+      <description>前言 在說一點什麼之前，先上成績！&#xA;Date Total Reading Listening Speaking Writing 20220723 62 17 16 15 14 20221029 84 18 26 19 21 20221203 84 19 23 23 19 20230107 86 24 18 22 22 20230211 96 29 23 22 22 其實從2022年初就報名了考試，但因為各種拖延逃避一直到了七月才硬著頭皮考了第一次，基本上只寫過幾回閱讀和聽力，四捨五入就當作裸考，結果也是可想而知的慘烈。接下來又經過了一陣子的自我懷疑、徬徨的低潮期，實際認真開始準備是九月左右，到2023二月的最後一戰，準備時間大概是半年，接下來就分為幾個部份來細說半年來跟托福戰鬥史！&#xA;背景 過去一直把自己定義為英文弱底，升學時英文是我最害怕的一個學科，學測的13級分是在補習班每天單字小考加上文法講義硬讀出來的，當時覺得這已經是我的英文極限了(？)上大學後除了原文書外基本上沒有在接觸英文，甚至連多益都沒有考過，大學的英文畢業門檻是用修課抵掉的，因此一戰的62分可以直接當作準備前的程度 。&#xA;釐清目的、目標 目的 這次考托福的原因是為了準備出國留學，但不管是什麼原因，決定要考試後就不留任何餘地給自己了！&#xA;目標 以留學來說，訂定目標成績的因素有以下幾個：&#xA;1. 國家、科系的要求門檻 2. 本身程度 3. 準備時間 我主要申請的國家與領域是美國的Computer Science，大多數查到的建議門檻為100，但考量到有限的時間以及有限的程度，我給自己的目標是95分，最初預期的準備時間為3個月，希望能在2022的12月前解決，可以接著專心準備其他申請文書，但後來的好幾戰又是另一個故事了&amp;hellip;&#xA;怎麼開始叻 下定決心 首先要知道自己沒有退路，而實際把後路砍斷的方法，就是馬上報名考試！貴到不行的報名費會讓決心蹭蹭的往上升。&#xA;蒐集資料 在正式開始唸書之前，可以花個幾天蒐集資料，以下列出幾種必須的內建資料庫：&#xA;1. 考試的詳細內容、時長等等資訊 2. 各種備考心得（PTT、Dcard、Medium、Youtube、Bilibili、一畝三分地） 大量去看各種備考心得，在練習的過程中實際去嘗試，找到能有感提升分數的方法。&#xA;3. 免費線上課程（Youtube、Bilibili） 若是文章或簡略的方法太過抽象，也可以找到許多英文老師的教學影片，例如實際演練做題、抄筆記、題目講解等，過去許多只能在補習班或付費課程看到的內容，都能在免費的影音平台看到。&#xA;練習素材 1. TPO 模擬考題</description>
     </item>
-    
     <item>
       <title>Climbing the Leaderboard</title>
       <link>http://localhost:1313/blog/post/climbing-the-leaderboard/</link>
       <pubDate>Sat, 18 Mar 2023 14:13:31 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/climbing-the-leaderboard/</guid>
-      <description>前言： 這題來自 HackerRank 的 1 Month Preparation Kit - Week 3，結合了 Leetocde 35. Search Insert Position以及26. Remove Duplicates from Sorted Array兩題的解題套路。
-題目： 題目提到的Dense Ranking指在一數組中，重複的數值會獲得一樣的名次 n，且下一個較小的數值會獲得n+1的名次。
-解題思路： 以題目給的 input 為例：
-ranked = [100, 90, 90, 80] player = [70, 80, 105] 1. 排除重複分數 已知 數組 ranked 中重複的分數獲得的是相同名次，因為有重複分數的緣故，index 與排名無法找出關聯。例如兩個 90 (一個index = 1, 另一個index = 2)在不同的 index 上但排名卻一樣。
-如果將數組濃縮為：
-ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其所在位置的index+1。例如score = 90對應index = 1，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前index即可算出排名。</description>
+      <description>前言： 這題來自 HackerRank 的 1 Month Preparation Kit - Week 3，結合了 Leetocde 35. Search Insert Position以及26. Remove Duplicates from Sorted Array兩題的解題套路。&#xA;題目： 題目提到的Dense Ranking指在一數組中，重複的數值會獲得一樣的名次 n，且下一個較小的數值會獲得n+1的名次。&#xA;解題思路： 以題目給的 input 為例：&#xA;ranked = [100, 90, 90, 80] player = [70, 80, 105] 1. 排除重複分數 已知 數組 ranked 中重複的分數獲得的是相同名次，因為有重複分數的緣故，index 與排名無法找出關聯。例如兩個 90 (一個index = 1, 另一個index = 2)在不同的 index 上但排名卻一樣。&#xA;如果將數組濃縮為：&#xA;ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其所在位置的index+1。例如score = 90對應index = 1，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前index即可算出排名。</description>
     </item>
-    
   </channel>
 </rss>

@@ -1,34 +1,26 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>BFS on Lutein 40g</title>
     <link>http://localhost:1313/blog/tags/bfs/</link>
     <description>Recent content in BFS on Lutein 40g</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 19 May 2023 01:07:13 +0800</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/bfs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 19 May 2023 01:07:13 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/blog/tags/bfs/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>39. Combination Sum </title>
       <link>http://localhost:1313/blog/post/leetcode_39/</link>
       <pubDate>Fri, 19 May 2023 01:07:13 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_39/</guid>
-      <description>前言： 這題的決策樹(decision tree)比較比較特別，左邊代表繼續選原本的，右邊代表啥都不選，就給你空著。只要把這個概念想清楚，這題也就迎刃而解了。
-題目： Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
-The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.</description>
+      <description>前言： 這題的決策樹(decision tree)比較比較特別，左邊代表繼續選原本的，右邊代表啥都不選，就給你空著。只要把這個概念想清楚，這題也就迎刃而解了。&#xA;題目： Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.&#xA;The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different.</description>
     </item>
-    
     <item>
       <title>199. Binary Tree Right Side View</title>
       <link>http://localhost:1313/blog/post/leetcode_199/</link>
       <pubDate>Tue, 16 May 2023 00:17:01 +0800</pubDate>
-      
       <guid>http://localhost:1313/blog/post/leetcode_199/</guid>
-      <description>前言： 這題BFS觀念 level order traveral, 學習如何在python中使用deque來解決BFS問題，並且學習在traversal時考慮子節點有null的情況
-題目： Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.
-* Example 1: Input: root = [1,2,3,null,5,null,4] Output: [1,3,4] * Example 2: Input: root = [1,null,3] Output: [1,3] * Example 3: Input: root = [] Output: [] 解題思路： 如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。
-1. 創建deque, 比list更適合 為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用popleft()以及append達成兩個要求。</description>
+      <description>前言： 這題BFS觀念 level order traveral, 學習如何在python中使用deque來解決BFS問題，並且學習在traversal時考慮子節點有null的情況&#xA;題目： Given the root of a binary tree, imagine yourself standing on the right side of it, return the values of the nodes you can see ordered from top to bottom.&#xA;* Example 1: Input: root = [1,2,3,null,5,null,4] Output: [1,3,4] * Example 2: Input: root = [1,null,3] Output: [1,3] * Example 3: Input: root = [] Output: [] 解題思路： 如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。&#xA;1. 創建deque, 比list更適合 為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用popleft()以及append達成兩個要求。</description>
     </item>
-    
   </channel>
 </rss>
