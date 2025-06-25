@@ -3,8 +3,8 @@ title: "What does eval $(minikube docker-env) do??"
 date: 2025-06-20T00:06:44+08:00
 draft: false
 author: 'Yang'
-tags: ['tree', 'DFS']
-categories: ['leetcode']
+tags: ['kubernetes', 'minikube']
+categories: ['learning', 'kubernetes']
 ---
 
 ### Why do I need this command
