@@ -6,12 +6,8 @@ author: 'Yang'
 tags: ['tree', 'DFS']
 categories: ['leetcode']
 ---
-* Why do I need the command
-* How do we usually communicate with Docker
-* How to communicate with Docker inside the mini VM?
-* What does this command do?
 
-### Why do I need the command
+### Why do I need this command
 Recently I'm following a [k8s tutorials](https://github.com/guangzhengli/k8s-tutorials), which is for the beginners who just start getting into the world of kubernetes. To create a lightweight cluster for education purpose, this tutorial adopt `minikube` as the container orchestration tool, which will run a full k8s to manage the containers created inside the cluster. One really important thing to notice that is that **the `minikube` cluster itself is a docker container running on my local machine**.
 
 In this tutorial, a special Docker container runs on local Docker deamon, which acts as a mini VM which contains everything to run K8s:
