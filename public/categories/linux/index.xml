@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Linux on Lutein 40g</title>
     <link>http://localhost:1313/blog/categories/linux/</link>
     <description>Recent content in Linux on Lutein 40g</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 22 Apr 2025 00:00:00 +0000</lastBuildDate><atom:link href="http://localhost:1313/blog/categories/linux/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>What is rm -rf?</title>
       <link>http://localhost:1313/blog/post/linux_command_rm/</link>
       <pubDate>Tue, 22 Apr 2025 00:00:00 +0000</pubDate>
+      
       <guid>http://localhost:1313/blog/post/linux_command_rm/</guid>
-      <description>I use a lot of Linux commands within my Ubuntu environment, and one of the most frequently used commands is rm -rf. I don&amp;rsquo;t even remember why I started using it. The only thing I can recall is that -r stands for recursive and -f stands for force. This is a pretty brutal command, as it deletes everything following the command without a blink of an eye.&#xA;To be a more sophisticated engineer, I decide to break it down:</description>
+      <description>I use a lot of Linux commands within my Ubuntu environment, and one of the most frequently used commands is rm -rf. I don&amp;rsquo;t even remember why I started using it. The only thing I can recall is that -r stands for recursive and -f stands for force. This is a pretty brutal command, as it deletes everything following the command without a blink of an eye.
+To be a more sophisticated engineer, I decide to break it down:</description>
     </item>
+    
   </channel>
 </rss>

@@ -128,6 +128,53 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>90. Subsets II
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前言： 這題跟78. Subsets 是幾乎一樣的問題，唯一的差別是這題給的input nums會有重複元素出現，但是output res不可有重複組合。
+題目： Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+* Example 1: Input: nums = [1,2,2] Output: [[],[1],[1,2],[1,2,2],[2],[2,2]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 一樣用決策樹的思路，一邊是放入當前元素、另一邊是不放入當前元素，只是放入如果已經放入了nums[i](#1)，在pop()後並且跳過nums[i]，打算在下次考慮nums[i&#43;1]前，要先判斷目前的nums[i]與nums[i&#43;1]是否一樣，如果一樣的話就跳過。這樣才可避免走到跟 #1 一樣的決策情況。
+一樣，決策的題目畫出決策樹是最好理解的。
+程式碼： class Solution: def subsetsWithDup(self, nums: List[int]) -&gt; List[List[int]]: res = [] nums....</p>
+  </div>
+  <footer class="entry-footer">May 19, 2023 . Yang</footer>
+  <a class="entry-link" aria-label="post link to 90. Subsets II" href="http://localhost:1313/blog/post/leetcode_90/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>46. Permutations
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前言： 這題看neetcode的作法感覺像是逆序而行，不太直觀，目前為止還沒看懂。先以之前寫過的解法來做題，下次再做到這題再用neetcode的解法試試。
+題目： Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
+* Example 1: Input: nums = [1,2,3] Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] * Example 2: Input: nums = [0,1] Output: [[0,1],[1,0]] * Example 3: Input: nums = [1] Output: [[1]] 解題思路： 假設一開始組合為空，那就是用for迴圈考慮當前的所有選擇，進入每個選擇時都先將當前的元素加入組合中，並且把當前數字移除，使得之後可以考慮的數字剩下除了剛剛加入的元素之外的所有元素，接著再重新進入下一個迴圈
+1. Base case 當目前組合的長度已經等於原本nums的長度，則表示已經選完所有數字，即將當前組合append到res中
+程式碼： class Solution: def permute(self, nums: List[int]) -&gt; List[List[int]]: res = [] comb = [] n = len(nums) def backtracking(nums): if len(comb) == n: res....</p>
+  </div>
+  <footer class="entry-footer">May 19, 2023 . Yang</footer>
+  <a class="entry-link" aria-label="post link to 46. Permutations" href="http://localhost:1313/blog/post/leetcode_46/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>39. Combination Sum 
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前言： 這題的決策樹(decision tree)比較比較特別，左邊代表繼續選原本的，右邊代表啥都不選，就給你空著。只要把這個概念想清楚，這題也就迎刃而解了。
+題目： Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
+The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different....</p>
+  </div>
+  <footer class="entry-footer">May 19, 2023 . Yang</footer>
+  <a class="entry-link" aria-label="post link to 39. Combination Sum " href="http://localhost:1313/blog/post/leetcode_39/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>78. Subsets
     </h2>
   </header>
@@ -140,7 +187,7 @@ arr = [1,2] 用一個暫存的subset來存放當前可能的子集合，每個�
 [] / \ [] [1] / \ / \ [] [2] [1] [1,2] 從上圖可以看出，每一層都是對於一個元素的取捨，從最上面的元素1開始，選擇左邊的路就是不放入當前元素，右邊的路就是放入，最後生成所有可能的子集
 1. Base case 因為input是一個array，所以當array走到底時就要跳出，此時也代表走到這條DFS路線上的終點，所以可以將當前的subset加入到res當中...</p>
   </div>
-  <footer class="entry-footer">May 17, 2023 Yang</footer>
+  <footer class="entry-footer">May 17, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 78. Subsets" href="http://localhost:1313/blog/post/leetcode_78/"></a>
 </article>
 
@@ -154,7 +201,7 @@ arr = [1,2] 用一個暫存的subset來存放當前可能的子集合，每個�
 題目： Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
 Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure....</p>
   </div>
-  <footer class="entry-footer">May 17, 2023 Yang</footer>
+  <footer class="entry-footer">May 17, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 297. Serialize and Deserialize Binary Tree" href="http://localhost:1313/blog/post/leetcode_297/"></a>
 </article>
 
@@ -169,7 +216,7 @@ Design an algorithm to serialize and deserialize a binary tree. There is no rest
 The path sum of a path is the sum of the node’s values in the path.
 Given the root of a binary tree, return the maximum path sum of any non-empty path....</p>
   </div>
-  <footer class="entry-footer">May 17, 2023 Yang</footer>
+  <footer class="entry-footer">May 17, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 124. Binary Tree Maximum Path Sum" href="http://localhost:1313/blog/post/leetcode_124/"></a>
 </article>
 
@@ -184,7 +231,7 @@ Given the root of a binary tree, return the maximum path sum of any non-empty pa
 * Example 1: Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7] Output: [3,9,20,null,null,15,7] * Example 2: Input: preorder = [-1], inorder = [-1] Output: [-1] 解題思路： 先備條件為：所有list中元素都是唯一的。
 Preorder list中，第一個元素必定是root node，此時就可以先create一個node作為出發點，繼續生成他的左子樹與右子樹 接著看到Inorder list，可以透過剛剛找到的root node來找出root node在Inorder中的位置(index)，而且這個index非常重要，它代表root node左子樹中所有node的總數量。所以如果index=3，就表示剛剛找到的root node的左子樹一共有三個節點。 在得到index後，回到Preorder，從剛剛建立好的root node往右走index步，就是左子樹於Preorder中最後一個元素，index&#43;1開始接著就都是右子樹的元素了 而此時Inorder中，index&#43;1開始也都是右子樹的元素 1....</p>
   </div>
-  <footer class="entry-footer">May 16, 2023 Yang</footer>
+  <footer class="entry-footer">May 16, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 105. Construct Binary Tree from Preorder and Inorder Traversal" href="http://localhost:1313/blog/post/leetcode_105/"></a>
 </article>
 
@@ -200,7 +247,7 @@ Preorder list中，第一個元素必定是root node，此時就可以先create�
 Return the number of good nodes in the binary tree.
 * Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node....</p>
   </div>
-  <footer class="entry-footer">May 16, 2023 Yang</footer>
+  <footer class="entry-footer">May 16, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 1448. Count Good Nodes in Binary Tree" href="http://localhost:1313/blog/post/leetcode_1448/"></a>
 </article>
 
@@ -215,7 +262,7 @@ Return the number of good nodes in the binary tree.
 * Example 1: Input: root = [1,2,3,null,5,null,4] Output: [1,3,4] * Example 2: Input: root = [1,null,3] Output: [1,3] * Example 3: Input: root = [] Output: [] 解題思路： 如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。
 1. 創建deque, 比list更適合 為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用popleft()以及append達成兩個要求。...</p>
   </div>
-  <footer class="entry-footer">May 16, 2023 Yang</footer>
+  <footer class="entry-footer">May 16, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 199. Binary Tree Right Side View" href="http://localhost:1313/blog/post/leetcode_199/"></a>
 </article>
 
@@ -237,56 +284,19 @@ Return the number of good nodes in the binary tree.
   <footer class="entry-footer">April 10, 2023</footer>
   <a class="entry-link" aria-label="post link to 110. Balanced Binary Tree" href="http://localhost:1313/blog/post/leetcode-110/"></a>
 </article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>TOEFL Preparation Part 1
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言 在說一點什麼之前，先上成績！
-Date Total Reading Listening Speaking Writing 20220723 62 17 16 15 14 20221029 84 18 26 19 21 20221203 84 19 23 23 19 20230107 86 24 18 22 22 20230211 96 29 23 22 22 其實從2022年初就報名了考試，但因為各種拖延逃避一直到了七月才硬著頭皮考了第一次，基本上只寫過幾回閱讀和聽力，四捨五入就當作裸考，結果也是可想而知的慘烈。接下來又經過了一陣子的自我懷疑、徬徨的低潮期，實際認真開始準備是九月左右，到2023二月的最後一戰，準備時間大概是半年，接下來就分為幾個部份來細說半年來跟托福戰鬥史！
-背景 過去一直把自己定義為英文弱底，升學時英文是我最害怕的一個學科，學測的13級分是在補習班每天單字小考加上文法講義硬讀出來的，當時覺得這已經是我的英文極限了(？)上大學後除了原文書外基本上沒有在接觸英文，甚至連多益都沒有考過，大學的英文畢業門檻是用修課抵掉的，因此一戰的62分可以直接當作準備前的程度 。
-釐清目的、目標 目的 這次考托福的原因是為了準備出國留學，但不管是什麼原因，決定要考試後就不留任何餘地給自己了！
-目標 以留學來說，訂定目標成績的因素有以下幾個：
-1. 國家、科系的要求門檻 2. 本身程度 3. 準備時間 我主要申請的國家與領域是美國的Computer Science，大多數查到的建議門檻為100，但考量到有限的時間以及有限的程度，我給自己的目標是95分，最初預期的準備時間為3個月，希望能在2022的12月前解決，可以接著專心準備其他申請文書，但後來的好幾戰又是另一個故事了…
-怎麼開始叻 下定決心 首先要知道自己沒有退路，而實際把後路砍斷的方法，就是馬上報名考試！貴到不行的報名費會讓決心蹭蹭的往上升。
-蒐集資料 在正式開始唸書之前，可以花個幾天蒐集資料，以下列出幾種必須的內建資料庫：
-1. 考試的詳細內容、時長等等資訊 2. 各種備考心得（PTT、Dcard、Medium、Youtube、Bilibili、一畝三分地） 大量去看各種備考心得，在練習的過程中實際去嘗試，找到能有感提升分數的方法。
-3. 免費線上課程（Youtube、Bilibili） 若是文章或簡略的方法太過抽象，也可以找到許多英文老師的教學影片，例如實際演練做題、抄筆記、題目講解等，過去許多只能在補習班或付費課程看到的內容，都能在免費的影音平台看到。
-練習素材 1. TPO 模擬考題...</p>
-  </div>
-  <footer class="entry-footer">March 19, 2023 Cindy</footer>
-  <a class="entry-link" aria-label="post link to TOEFL Preparation Part 1" href="http://localhost:1313/blog/post/toefl01/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>Climbing the Leaderboard
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言： 這題來自 HackerRank 的 1 Month Preparation Kit - Week 3，結合了 Leetocde 35. Search Insert Position以及26. Remove Duplicates from Sorted Array兩題的解題套路。
-題目： 題目提到的Dense Ranking指在一數組中，重複的數值會獲得一樣的名次 n，且下一個較小的數值會獲得n&#43;1的名次。
-解題思路： 以題目給的 input 為例：
-ranked = [100, 90, 90, 80] player = [70, 80, 105] 1. 排除重複分數 已知 數組 ranked 中重複的分數獲得的是相同名次，因為有重複分數的緣故，index 與排名無法找出關聯。例如兩個 90 (一個index = 1, 另一個index = 2)在不同的 index 上但排名卻一樣。
-如果將數組濃縮為：
-ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其所在位置的index&#43;1。例如score = 90對應index = 1，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前index即可算出排名。...</p>
-  </div>
-  <footer class="entry-footer">March 18, 2023 Yang</footer>
-  <a class="entry-link" aria-label="post link to Climbing the Leaderboard" href="http://localhost:1313/blog/post/climbing-the-leaderboard/"></a>
-</article>
 <footer class="page-footer">
   <nav class="pagination">
     <a class="prev" href="http://localhost:1313/blog/post/">
       «&nbsp;Prev&nbsp;
+    </a>
+    <a class="next" href="http://localhost:1313/blog/post/page/3/">Next&nbsp;&nbsp;»
     </a>
   </nav>
 </footer>
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>&copy; 2025 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

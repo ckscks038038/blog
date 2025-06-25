@@ -1,19 +1,25 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Binary Search on Lutein 40g</title>
     <link>http://localhost:1313/blog/tags/binary-search/</link>
     <description>Recent content in Binary Search on Lutein 40g</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 18 Mar 2023 14:13:31 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/tags/binary-search/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sat, 18 Mar 2023 14:13:31 +0800</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/binary-search/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Climbing the Leaderboard</title>
       <link>http://localhost:1313/blog/post/climbing-the-leaderboard/</link>
       <pubDate>Sat, 18 Mar 2023 14:13:31 +0800</pubDate>
+      
       <guid>http://localhost:1313/blog/post/climbing-the-leaderboard/</guid>
-      <description>前言： 這題來自 HackerRank 的 1 Month Preparation Kit - Week 3，結合了 Leetocde 35. Search Insert Position以及26. Remove Duplicates from Sorted Array兩題的解題套路。&#xA;題目： 題目提到的Dense Ranking指在一數組中，重複的數值會獲得一樣的名次 n，且下一個較小的數值會獲得n+1的名次。&#xA;解題思路： 以題目給的 input 為例：&#xA;ranked = [100, 90, 90, 80] player = [70, 80, 105] 1. 排除重複分數 已知 數組 ranked 中重複的分數獲得的是相同名次，因為有重複分數的緣故，index 與排名無法找出關聯。例如兩個 90 (一個index = 1, 另一個index = 2)在不同的 index 上但排名卻一樣。&#xA;如果將數組濃縮為：&#xA;ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其所在位置的index+1。例如score = 90對應index = 1，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前index即可算出排名。</description>
+      <description>前言： 這題來自 HackerRank 的 1 Month Preparation Kit - Week 3，結合了 Leetocde 35. Search Insert Position以及26. Remove Duplicates from Sorted Array兩題的解題套路。
+題目： 題目提到的Dense Ranking指在一數組中，重複的數值會獲得一樣的名次 n，且下一個較小的數值會獲得n+1的名次。
+解題思路： 以題目給的 input 為例：
+ranked = [100, 90, 90, 80] player = [70, 80, 105] 1. 排除重複分數 已知 數組 ranked 中重複的分數獲得的是相同名次，因為有重複分數的緣故，index 與排名無法找出關聯。例如兩個 90 (一個index = 1, 另一個index = 2)在不同的 index 上但排名卻一樣。
+如果將數組濃縮為：
+ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其所在位置的index+1。例如score = 90對應index = 1，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前index即可算出排名。</description>
     </item>
+    
   </channel>
 </rss>

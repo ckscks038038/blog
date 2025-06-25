@@ -1,19 +1,24 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Microsoft on Lutein 40g</title>
     <link>http://localhost:1313/blog/tags/microsoft/</link>
     <description>Recent content in Microsoft on Lutein 40g</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 16 May 2023 19:33:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 16 May 2023 19:33:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/microsoft/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>1448. Count Good Nodes in Binary Tree</title>
       <link>http://localhost:1313/blog/post/leetcode_1448/</link>
       <pubDate>Tue, 16 May 2023 19:33:00 +0800</pubDate>
+      
       <guid>http://localhost:1313/blog/post/leetcode_1448/</guid>
-      <description>前言： 這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個非null節點都被當作參數call一次DFS&#xA;這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成process跟iterative call兩部份)，再來改process確切要做什麼、以及iterative call的return value要如何處理。&#xA;題目： Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.&#xA;Return the number of good nodes in the binary tree.&#xA;* Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node.</description>
+      <description>前言： 這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個非null節點都被當作參數call一次DFS
+這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成process跟iterative call兩部份)，再來改process確切要做什麼、以及iterative call的return value要如何處理。
+題目： Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.
+Return the number of good nodes in the binary tree.
+* Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node.</description>
     </item>
+    
   </channel>
 </rss>

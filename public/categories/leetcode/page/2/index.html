@@ -128,6 +128,20 @@
 
 <article class="post-entry tag-entry"> 
   <header class="entry-header">
+    <h2>297. Serialize and Deserialize Binary Tree
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>前言： 這題用DFS或BFS來做serialize跟deserialize，但因為DFS比較容易想，code也比較少，就選擇用DFS來寫。
+題目： Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure....</p>
+  </div>
+  <footer class="entry-footer">May 17, 2023 . Yang</footer>
+  <a class="entry-link" aria-label="post link to 297. Serialize and Deserialize Binary Tree" href="http://localhost:1313/blog/post/leetcode_297/"></a>
+</article>
+
+<article class="post-entry tag-entry"> 
+  <header class="entry-header">
     <h2>124. Binary Tree Maximum Path Sum
     </h2>
   </header>
@@ -137,7 +151,7 @@
 The path sum of a path is the sum of the node’s values in the path.
 Given the root of a binary tree, return the maximum path sum of any non-empty path....</p>
   </div>
-  <footer class="entry-footer">May 17, 2023&amp;nbsp;·&amp;nbsp;Yang</footer>
+  <footer class="entry-footer">May 17, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 124. Binary Tree Maximum Path Sum" href="http://localhost:1313/blog/post/leetcode_124/"></a>
 </article>
 
@@ -152,7 +166,7 @@ Given the root of a binary tree, return the maximum path sum of any non-empty pa
 * Example 1: Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7] Output: [3,9,20,null,null,15,7] * Example 2: Input: preorder = [-1], inorder = [-1] Output: [-1] 解題思路： 先備條件為：所有list中元素都是唯一的。
 Preorder list中，第一個元素必定是root node，此時就可以先create一個node作為出發點，繼續生成他的左子樹與右子樹 接著看到Inorder list，可以透過剛剛找到的root node來找出root node在Inorder中的位置(index)，而且這個index非常重要，它代表root node左子樹中所有node的總數量。所以如果index=3，就表示剛剛找到的root node的左子樹一共有三個節點。 在得到index後，回到Preorder，從剛剛建立好的root node往右走index步，就是左子樹於Preorder中最後一個元素，index&#43;1開始接著就都是右子樹的元素了 而此時Inorder中，index&#43;1開始也都是右子樹的元素 1....</p>
   </div>
-  <footer class="entry-footer">May 16, 2023&amp;nbsp;·&amp;nbsp;Yang</footer>
+  <footer class="entry-footer">May 16, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 105. Construct Binary Tree from Preorder and Inorder Traversal" href="http://localhost:1313/blog/post/leetcode_105/"></a>
 </article>
 
@@ -168,7 +182,7 @@ Preorder list中，第一個元素必定是root node，此時就可以先create�
 Return the number of good nodes in the binary tree.
 * Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node....</p>
   </div>
-  <footer class="entry-footer">May 16, 2023&amp;nbsp;·&amp;nbsp;Yang</footer>
+  <footer class="entry-footer">May 16, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 1448. Count Good Nodes in Binary Tree" href="http://localhost:1313/blog/post/leetcode_1448/"></a>
 </article>
 
@@ -183,7 +197,7 @@ Return the number of good nodes in the binary tree.
 * Example 1: Input: root = [1,2,3,null,5,null,4] Output: [1,3,4] * Example 2: Input: root = [1,null,3] Output: [1,3] * Example 3: Input: root = [] Output: [] 解題思路： 如果把樹的每一層都當作一個一維陣列，從上往下、從左往右，每次把traverse到的新節點加入到一維陣列中，並找出一維陣列的最右邊元素(rightSide)，就可以得到結果。
 1. 創建deque, 比list更適合 為什麼更適合呢？因為當使用list走完一個level時，需要把已經遍歷的元素pop掉(左邊)，同時前面新訪問到的子節點又需要append(右邊)，因此使用deque就可以用popleft()以及append達成兩個要求。...</p>
   </div>
-  <footer class="entry-footer">May 16, 2023&amp;nbsp;·&amp;nbsp;Yang</footer>
+  <footer class="entry-footer">May 16, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 199. Binary Tree Right Side View" href="http://localhost:1313/blog/post/leetcode_199/"></a>
 </article>
 
@@ -219,7 +233,7 @@ ranked = [100, 90, 90, 80] player = [70, 80, 105] 1. 排除重複分數 已知 �
 如果將數組濃縮為：
 ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其所在位置的index&#43;1。例如score = 90對應index = 1，則排名為第二名。這樣一來後續要將 player 的分數加入數組時只需要根據當前index即可算出排名。...</p>
   </div>
-  <footer class="entry-footer">March 18, 2023&amp;nbsp;·&amp;nbsp;Yang</footer>
+  <footer class="entry-footer">March 18, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to Climbing the Leaderboard" href="http://localhost:1313/blog/post/climbing-the-leaderboard/"></a>
 </article>
 <footer class="page-footer">
@@ -232,7 +246,7 @@ ranked = [100, 90, 80] 則各分數在 leaderboard 中的排名剛好等於其�
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>&copy; 2025 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -128,6 +128,44 @@
 
 <article class="post-entry"> 
   <header class="entry-header">
+    <h2>What does eval $(minikube docker-env) do??
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Why do I need the command How do we usually communicate with Docker How to communicate with Docker inside the mini VM? What does this command do? Why do I need the command Recently I’m following a k8s tutorials, which is for the beginners who just start getting into the world of kubernetes. To create a lightweight cluster for education purpose, this tutorial adopt minikube as the container orchestration tool, which will run a full k8s to manage the containers created inside the cluster....</p>
+  </div>
+  <footer class="entry-footer">June 20, 2025 . Yang</footer>
+  <a class="entry-link" aria-label="post link to What does eval $(minikube docker-env) do??" href="http://localhost:1313/blog/post/minikube_docker_env/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>do it.
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>Preface I am not sure if the preface would exist in the following posts. The reason why here’s a preface is because I decided to start jotting down my feeling and thoughts, and I hope this preface is used as a anchor expalining the beginning for everthing in the future.
+I was kind of lost after failing the interview with Bloomberg. It felt like all the drive and hope was disappear after all that....</p>
+  </div>
+  <footer class="entry-footer">May 18, 2025 . Yang</footer>
+  <a class="entry-link" aria-label="post link to do it." href="http://localhost:1313/blog/post/journal-05192025/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
+    <h2>What is rm -rf?
+    </h2>
+  </header>
+  <div class="entry-content">
+    <p>I use a lot of Linux commands within my Ubuntu environment, and one of the most frequently used commands is rm -rf. I don’t even remember why I started using it. The only thing I can recall is that -r stands for recursive and -f stands for force. This is a pretty brutal command, as it deletes everything following the command without a blink of an eye.
+To be a more sophisticated engineer, I decide to break it down:...</p>
+  </div>
+  <footer class="entry-footer">April 22, 2025 . Yang</footer>
+  <a class="entry-link" aria-label="post link to What is rm -rf?" href="http://localhost:1313/blog/post/linux_command_rm/"></a>
+</article>
+
+<article class="post-entry"> 
+  <header class="entry-header">
     <h2>Member Initializer List
     </h2>
   </header>
@@ -137,7 +175,7 @@ More efficient, especially for complex types.
 Required for const and reference members:
 class Example { const int m_value; public: Example(int value) : m_value(value) {} // Must use initializer list }; Assignment in Constructor Body class Example { int* m_ptr; public: Example(int* ptr = nullptr) { m_ptr = ptr; // m_ptr is default-initialized, then assigned } }; Involves default initialization followed by assignment....</p>
   </div>
-  <footer class="entry-footer">December 18, 2024 Yang</footer>
+  <footer class="entry-footer">December 18, 2024 . Yang</footer>
   <a class="entry-link" aria-label="post link to Member Initializer List" href="http://localhost:1313/blog/post/member_initializer_list/"></a>
 </article>
 
@@ -165,7 +203,7 @@ You’ve made your first pull request, perhaps a missing test, or readme improve
     <p>前言： 在完成這題之前看了很多影片教學，下述幾個影片是我覺得對理解backtracking非常有幫助的：
 印度老哥圖解方法，用tree來呈現整個回溯過程 這次官神的解法比neetcode更好理解 題目： * Example 1: * Example 2: * Example 3: 解題思路： 1. 2. 程式碼： </p>
   </div>
-  <footer class="entry-footer">May 30, 2023 Yang</footer>
+  <footer class="entry-footer">May 30, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 51. N-Queens " href="http://localhost:1313/blog/post/leetcode_51/"></a>
 </article>
 
@@ -183,7 +221,7 @@ A mapping of digits to letters (just like on the telephone buttons) is given bel
 為了避免此問題要先判斷digits是否為空字串
 程式碼： class Solution: def letterCombinations(self, digits: str) -&gt; List[str]: res = [] map = { &#34;2&#34;:&#34;abc&#34;, &#34;3&#34;:&#34;def&#34;, &#34;4&#34;:&#34;ghi&#34;, &#34;5&#34;:&#34;jkl&#34;, &#34;6&#34;:&#34;mno&#34;, &#34;7&#34;:&#34;pqrs&#34;, &#34;8&#34;:&#34;tuv&#34;, &#34;9&#34;:&#34;wxyz&#34;, } def dfs(curStr, i): if i &gt;= len(digits): res....</p>
   </div>
-  <footer class="entry-footer">May 24, 2023 Yang</footer>
+  <footer class="entry-footer">May 24, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 17. Letter Combinations of a Phone Number" href="http://localhost:1313/blog/post/leetcode_17/"></a>
 </article>
 
@@ -198,7 +236,7 @@ A mapping of digits to letters (just like on the telephone buttons) is given bel
 The word can be constructed from letters of sequentially adjacent cells, where adjacent cells are horizontally or vertically neighboring. The same letter cell may not be used more than once.
 * Example 1: Input: board = [[&#34;A&#34;,&#34;B&#34;,&#34;C&#34;,&#34;E&#34;], [&#34;S&#34;,&#34;F&#34;,&#34;C&#34;,&#34;S&#34;], [&#34;A&#34;,&#34;D&#34;,&#34;E&#34;,&#34;E&#34;]], word = &#34;ABCCED&#34; Output: true * Example 2: Input: board = [[&#34;A&#34;,&#34;B&#34;,&#34;C&#34;,&#34;E&#34;], [&#34;S&#34;,&#34;F&#34;,&#34;C&#34;,&#34;S&#34;], [&#34;A&#34;,&#34;D&#34;,&#34;E&#34;,&#34;E&#34;]], word = &#34;SEE&#34; Output: true * Example 3: 解題思路： 兩個核心概念，邊界條件以及bfs機制。...</p>
   </div>
-  <footer class="entry-footer">May 23, 2023 Yang</footer>
+  <footer class="entry-footer">May 23, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 79. Word Search" href="http://localhost:1313/blog/post/leetcode_79/"></a>
 </article>
 
@@ -216,7 +254,7 @@ The word can be constructed from letters of sequentially adjacent cells, where a
 i: 0 -&gt; 0: &#34;a&#34; i: 0 -&gt; 1: &#34;aa&#34; i: 0 -&gt; 2: &#34;aab&#34; 接著判斷是否第一部份為回文，是的話進入第二部份，並且將子字串加入part; 不是的話則不繼續往下找
 for j in range(i, len(s)): if self....</p>
   </div>
-  <footer class="entry-footer">May 22, 2023 Yang</footer>
+  <footer class="entry-footer">May 22, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 131. Palindrome Partitioning" href="http://localhost:1313/blog/post/leetcode_131/"></a>
 </article>
 
@@ -233,55 +271,8 @@ Each number in candidates may only be used once in the combination.
 Note: The solution set must not contain duplicate combinations.
 * Example 1: Input: candidates = [10,1,2,7,6,1,5], target = 8 Output: [ [1,1,6], [1,2,5], [1,7], [2,6] ] * Example 2: Input: candidates = [2,5,2,1,2], target = 5 Output: [ [1,2,2], [5] ] 解題思路： 1....</p>
   </div>
-  <footer class="entry-footer">May 19, 2023 Yang</footer>
+  <footer class="entry-footer">May 19, 2023 . Yang</footer>
   <a class="entry-link" aria-label="post link to 40. Combination Sum II" href="http://localhost:1313/blog/post/leetcode_40/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>90. Subsets II
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言： 這題跟78. Subsets 是幾乎一樣的問題，唯一的差別是這題給的input nums會有重複元素出現，但是output res不可有重複組合。
-題目： Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
-The solution set must not contain duplicate subsets. Return the solution in any order.
-* Example 1: Input: nums = [1,2,2] Output: [[],[1],[1,2],[1,2,2],[2],[2,2]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 一樣用決策樹的思路，一邊是放入當前元素、另一邊是不放入當前元素，只是放入如果已經放入了nums[i](#1)，在pop()後並且跳過nums[i]，打算在下次考慮nums[i&#43;1]前，要先判斷目前的nums[i]與nums[i&#43;1]是否一樣，如果一樣的話就跳過。這樣才可避免走到跟 #1 一樣的決策情況。
-一樣，決策的題目畫出決策樹是最好理解的。
-程式碼： class Solution: def subsetsWithDup(self, nums: List[int]) -&gt; List[List[int]]: res = [] nums....</p>
-  </div>
-  <footer class="entry-footer">May 19, 2023 Yang</footer>
-  <a class="entry-link" aria-label="post link to 90. Subsets II" href="http://localhost:1313/blog/post/leetcode_90/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>46. Permutations
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言： 這題看neetcode的作法感覺像是逆序而行，不太直觀，目前為止還沒看懂。先以之前寫過的解法來做題，下次再做到這題再用neetcode的解法試試。
-題目： Given an array nums of distinct integers, return all the possible permutations. You can return the answer in any order.
-* Example 1: Input: nums = [1,2,3] Output: [[1,2,3],[1,3,2],[2,1,3],[2,3,1],[3,1,2],[3,2,1]] * Example 2: Input: nums = [0,1] Output: [[0,1],[1,0]] * Example 3: Input: nums = [1] Output: [[1]] 解題思路： 假設一開始組合為空，那就是用for迴圈考慮當前的所有選擇，進入每個選擇時都先將當前的元素加入組合中，並且把當前數字移除，使得之後可以考慮的數字剩下除了剛剛加入的元素之外的所有元素，接著再重新進入下一個迴圈
-1. Base case 當目前組合的長度已經等於原本nums的長度，則表示已經選完所有數字，即將當前組合append到res中
-程式碼： class Solution: def permute(self, nums: List[int]) -&gt; List[List[int]]: res = [] comb = [] n = len(nums) def backtracking(nums): if len(comb) == n: res....</p>
-  </div>
-  <footer class="entry-footer">May 19, 2023 Yang</footer>
-  <a class="entry-link" aria-label="post link to 46. Permutations" href="http://localhost:1313/blog/post/leetcode_46/"></a>
-</article>
-
-<article class="post-entry"> 
-  <header class="entry-header">
-    <h2>39. Combination Sum 
-    </h2>
-  </header>
-  <div class="entry-content">
-    <p>前言： 這題的決策樹(decision tree)比較比較特別，左邊代表繼續選原本的，右邊代表啥都不選，就給你空著。只要把這個概念想清楚，這題也就迎刃而解了。
-題目： Given an array of distinct integers candidates and a target integer target, return a list of all unique combinations of candidates where the chosen numbers sum to target. You may return the combinations in any order.
-The same number may be chosen from candidates an unlimited number of times. Two combinations are unique if the frequency of at least one of the chosen numbers is different....</p>
-  </div>
-  <footer class="entry-footer">May 19, 2023 Yang</footer>
-  <a class="entry-link" aria-label="post link to 39. Combination Sum " href="http://localhost:1313/blog/post/leetcode_39/"></a>
 </article>
 <footer class="page-footer">
   <nav class="pagination">
@@ -292,7 +283,7 @@ The same number may be chosen from candidates an unlimited number of times. Two 
     </main>
     
 <footer class="footer">
-    <span>&copy; 2024 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>&copy; 2025 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
     <span>
         Powered by
         <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &

@@ -1,40 +1,71 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>DFS on Lutein 40g</title>
     <link>http://localhost:1313/blog/tags/dfs/</link>
     <description>Recent content in DFS on Lutein 40g</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 17 May 2023 01:26:32 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/tags/dfs/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 20 Jun 2025 00:06:44 +0800</lastBuildDate><atom:link href="http://localhost:1313/blog/tags/dfs/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>What does eval $(minikube docker-env) do??</title>
+      <link>http://localhost:1313/blog/post/minikube_docker_env/</link>
+      <pubDate>Fri, 20 Jun 2025 00:06:44 +0800</pubDate>
+      
+      <guid>http://localhost:1313/blog/post/minikube_docker_env/</guid>
+      <description>Recently I&amp;rsquo;m following a k8s tutorials, which is for the beginners who just start getting into the world of kubernetes.</description>
+    </item>
+    
     <item>
       <title>78. Subsets</title>
       <link>http://localhost:1313/blog/post/leetcode_78/</link>
       <pubDate>Wed, 17 May 2023 01:26:32 +0800</pubDate>
+      
       <guid>http://localhost:1313/blog/post/leetcode_78/</guid>
-      <description>前言： 這題在school也有寫過，當時還負責主講，沒想到時到今日全都忘光了。這次看neetcode的作法選用DFS，赫然發現這是一個更好的作法。&#xA;題目： Given an integer array nums of unique elements, return all possible subsets(the power set).&#xA;The solution set must not contain duplicate subsets. Return the solution in any order.&#xA;* Example 1: Input: nums = [1,2,3] Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 給定一個list:&#xA;arr = [1,2] 用一個暫存的subset來存放當前可能的子集合，每個元素都有兩種選擇，要放入subset或是不要放入。&#xA;[] / \ [] [1] / \ / \ [] [2] [1] [1,2] 從上圖可以看出，每一層都是對於一個元素的取捨，從最上面的元素1開始，選擇左邊的路就是不放入當前元素，右邊的路就是放入，最後生成所有可能的子集&#xA;1. Base case 因為input是一個array，所以當array走到底時就要跳出，此時也代表走到這條DFS路線上的終點，所以可以將當前的subset加入到res當中</description>
+      <description>前言： 這題在school也有寫過，當時還負責主講，沒想到時到今日全都忘光了。這次看neetcode的作法選用DFS，赫然發現這是一個更好的作法。
+題目： Given an integer array nums of unique elements, return all possible subsets(the power set).
+The solution set must not contain duplicate subsets. Return the solution in any order.
+* Example 1: Input: nums = [1,2,3] Output: [[],[1],[2],[1,2],[3],[1,3],[2,3],[1,2,3]] * Example 2: Input: nums = [0] Output: [[],[0]] 解題思路： 給定一個list:
+arr = [1,2] 用一個暫存的subset來存放當前可能的子集合，每個元素都有兩種選擇，要放入subset或是不要放入。
+[] / \ [] [1] / \ / \ [] [2] [1] [1,2] 從上圖可以看出，每一層都是對於一個元素的取捨，從最上面的元素1開始，選擇左邊的路就是不放入當前元素，右邊的路就是放入，最後生成所有可能的子集
+1. Base case 因為input是一個array，所以當array走到底時就要跳出，此時也代表走到這條DFS路線上的終點，所以可以將當前的subset加入到res當中</description>
     </item>
+    
     <item>
       <title>297. Serialize and Deserialize Binary Tree</title>
       <link>http://localhost:1313/blog/post/leetcode_297/</link>
       <pubDate>Wed, 17 May 2023 00:38:17 +0800</pubDate>
+      
       <guid>http://localhost:1313/blog/post/leetcode_297/</guid>
-      <description>前言： 這題用DFS或BFS來做serialize跟deserialize，但因為DFS比較容易想，code也比較少，就選擇用DFS來寫。&#xA;題目： Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.&#xA;Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</description>
+      <description>前言： 這題用DFS或BFS來做serialize跟deserialize，但因為DFS比較容易想，code也比較少，就選擇用DFS來寫。
+題目： Serialization is the process of converting a data structure or object into a sequence of bits so that it can be stored in a file or memory buffer, or transmitted across a network connection link to be reconstructed later in the same or another computer environment.
+Design an algorithm to serialize and deserialize a binary tree. There is no restriction on how your serialization/deserialization algorithm should work. You just need to ensure that a binary tree can be serialized to a string and this string can be deserialized to the original tree structure.</description>
     </item>
+    
     <item>
       <title>124. Binary Tree Maximum Path Sum</title>
       <link>http://localhost:1313/blog/post/leetcode_124/</link>
       <pubDate>Wed, 17 May 2023 00:06:44 +0800</pubDate>
+      
       <guid>http://localhost:1313/blog/post/leetcode_124/</guid>
-      <description>前言： 這題雖然是hard，但看完山景城跟neetcode的解釋後便頓然開悟，比起前幾題，124反而在解題方向上更明確。 做完這題應該要去做leetcode_543，解題思路幾乎相同。&#xA;題目： A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.&#xA;The path sum of a path is the sum of the node&amp;rsquo;s values in the path.&#xA;Given the root of a binary tree, return the maximum path sum of any non-empty path.</description>
+      <description>前言： 這題雖然是hard，但看完山景城跟neetcode的解釋後便頓然開悟，比起前幾題，124反而在解題方向上更明確。 做完這題應該要去做leetcode_543，解題思路幾乎相同。
+題目： A path in a binary tree is a sequence of nodes where each pair of adjacent nodes in the sequence has an edge connecting them. A node can only appear in the sequence at most once. Note that the path does not need to pass through the root.
+The path sum of a path is the sum of the node&amp;rsquo;s values in the path.
+Given the root of a binary tree, return the maximum path sum of any non-empty path.</description>
     </item>
+    
     <item>
       <title>1448. Count Good Nodes in Binary Tree</title>
       <link>http://localhost:1313/blog/post/leetcode_1448/</link>
       <pubDate>Tue, 16 May 2023 19:33:00 +0800</pubDate>
+      
       <guid>http://localhost:1313/blog/post/leetcode_1448/</guid>
-      <description>前言： 這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個非null節點都被當作參數call一次DFS&#xA;這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成process跟iterative call兩部份)，再來改process確切要做什麼、以及iterative call的return value要如何處理。&#xA;題目： Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.&#xA;Return the number of good nodes in the binary tree.&#xA;* Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node.</description>
+      <description>前言： 這裡練習DFS的觀念。每次寫DFS都會有新的體會、或想起之前對它的見解，例如這次就想起之前有想到過DFS的遞迴關係其實就只是重複call DFS function，所以理解為每個非null節點都被當作參數call一次DFS
+這次又另外了解到，在知道要用DFS來解決問題後，可以先把DFS基本雛型先寫出來(分成process跟iterative call兩部份)，再來改process確切要做什麼、以及iterative call的return value要如何處理。
+題目： Given a binary tree root, a node X in the tree is named good if in the path from root to X there are no nodes with a value greater than X.
+Return the number of good nodes in the binary tree.
+* Example 1: Input: root = [3,1,4,3,null,1,5] Output: 4 Explanation: Nodes in blue are good. Root Node (3) is always a good node.</description>
     </item>
+    
   </channel>
 </rss>

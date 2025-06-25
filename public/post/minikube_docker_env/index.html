@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/blog/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=blog/livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>What does eval $(minikube docker-env) do?? | Lutein 40g</title>
+<meta name="keywords" content="tree, DFS">
+<meta name="description" content="Why do I need the command How do we usually communicate with Docker How to communicate with Docker inside the mini VM? What does this command do? Why do I need the command Recently I&rsquo;m following a k8s tutorials, which is for the beginners who just start getting into the world of kubernetes. To create a lightweight cluster for education purpose, this tutorial adopt minikube as the container orchestration tool, which will run a full k8s to manage the containers created inside the cluster.">
+<meta name="author" content="Yang">
+<link rel="canonical" href="http://localhost:1313/blog/post/minikube_docker_env/">
+<link crossorigin="anonymous" href="/blog/assets/css/stylesheet.6a98292fb8fa8cf0f3ba4042d4b75515c04267550f3ad49ff6271b5af9562443.css" integrity="sha256-apgpL7j6jPDzukBC1LdVFcBCZ1UPOtSf9icbWvlWJEM=" rel="preload stylesheet" as="style">
+<script defer crossorigin="anonymous" src="/blog/assets/js/highlight.f413e19d0714851f6474e7ee9632408e58ac146fbdbe62747134bea2fa3415e0.js" integrity="sha256-9BPhnQcUhR9kdOfuljJAjlisFG&#43;9vmJ0cTS&#43;ovo0FeA="
+    onload="hljs.initHighlightingOnLoad();"></script>
+<link rel="icon" href="http://localhost:1313/blog/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/blog/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/blog/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/blog/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/blog/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/blog/post/minikube_docker_env/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --hljs-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/blog/" accesskey="h" title="Lutein 40g (Alt + H)">Lutein 40g</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+                <ul class="lang-switch"><li>|</li>
+                </ul>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/blog/categories/" title="Categories">
+                    <span>Categories</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/tags/" title="Tags">
+                    <span>Tags</span>
+                </a>
+            </li>
+            <li>
+                <a href="http://localhost:1313/blog/archives/" title="Archives">
+                    <span>Archives</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    
+    <h1 class="post-title">
+      What does eval $(minikube docker-env) do??
+    </h1>
+    <div class="post-meta">June 20, 2025 . Yang
+
+</div>
+  </header> 
+  <div class="post-content"><ul>
+<li>Why do I need the command</li>
+<li>How do we usually communicate with Docker</li>
+<li>How to communicate with Docker inside the mini VM?</li>
+<li>What does this command do?</li>
+</ul>
+<h3 id="why-do-i-need-the-command">Why do I need the command<a hidden class="anchor" aria-hidden="true" href="#why-do-i-need-the-command">#</a></h3>
+<p>Recently I&rsquo;m following a <a href="https://github.com/guangzhengli/k8s-tutorials">k8s tutorials</a>, which is for the beginners who just start getting into the world of kubernetes. To create a lightweight cluster for education purpose, this tutorial adopt <code>minikube</code> as the container orchestration tool, which will run a full k8s to manage the containers created inside the cluster. One really important thing to notice that is that <strong>the <code>minikube</code> cluster itself is a docker container running on my local machine</strong>.</p>
+<p>In this tutorial, a special Docker container runs on local Docker deamon, which acts as a mini VM which contains everything to run K8s:</p>
+<p><code>minikube start --vm-driver=docker --container-runtime=docker</code></p>
+<p>And the base image for the VM is:
+<code>gcr.io/k8s-minikube/kicbase</code>, which contains:</p>
+<ul>
+<li>
+<p>A minimal Linux OS</p>
+</li>
+<li>
+<p>Kubernetes components: kubelet, kube-apiserver, etc.</p>
+</li>
+<li>
+<p>A container runtime (like Docker or containerd)</p>
+</li>
+</ul>
+<h3 id="how-do-we-usually-communicate-with-docker">How do we usually communicate with Docker<a hidden class="anchor" aria-hidden="true" href="#how-do-we-usually-communicate-with-docker">#</a></h3>
+<p>For my default usage of Docker, I have a docker CLI allowing me to set prompt to talk to docker daemon through terminal. Then docker will start running any required images on my local machine.</p>
+<h3 id="how-to-communicate-with-docker-inside-the-mini-vm">How to communicate with Docker inside the mini VM?<a hidden class="anchor" aria-hidden="true" href="#how-to-communicate-with-docker-inside-the-mini-vm">#</a></h3>
+<p>Since docker is selected as the runtime running inside minikube, I need to find a way to talk to Docker daemon in order to manage containers in it.</p>
+<p>The command temporarily configuring local docker CLI(terminal) to talk to that inner Docker daemon — the one running inside the Minikube container:</p>
+<p><code>eval $(minikube docker-env)</code></p>
+<p>Any container running inside the minikube container should be accessed through the minikube ip:</p>
+<p><em>Get the ip of VM:</em>
+<code>minikube ip</code> -&gt; <code>192.168.49.2</code></p>
+<p><em>Access the container inside the cluster:</em>
+<code>curl 192.168.49.2:3000</code></p>
+<p>Now we are able to communicate with the docker Daemon inside minikube container through the terminal on local machine.</p>
+<h3 id="what-does-this-command-do">What does this command do?<a hidden class="anchor" aria-hidden="true" href="#what-does-this-command-do">#</a></h3>
+<p>This command lets the Docker CLI talk to the Docker daemon inside Minikube instead of my local one.</p>
+<p>Step-by-step:</p>
+<ol>
+<li><code>minikube docker-env</code> outputs shell commands like:</li>
+</ol>
+<pre tabindex="0"><code>export DOCKER_HOST=...
+export DOCKER_CERT_PATH=...
+</code></pre><ol>
+<li>
+<p>eval $(&hellip;) runs those export commands in the current shell.</p>
+</li>
+<li>
+<p>The docker commands now control containers inside Minikube, not on host.</p>
+</li>
+</ol>
+<p><strong>To swich back to local docker, simply go with:
+<code>eval $(minikube docker-env -u)</code> , or just start a new terminal.</strong></p>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+      <li><a href="http://localhost:1313/blog/tags/tree/">Tree</a></li>
+      <li><a href="http://localhost:1313/blog/tags/dfs/">DFS</a></li>
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+    <span>&copy; 2025 <a href="http://localhost:1313/blog/">Lutein 40g</a></span>
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+</body>
+
+</html>

@@ -1,19 +1,21 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>Journal on Lutein 40g</title>
     <link>http://localhost:1313/blog/categories/journal/</link>
     <description>Recent content in Journal on Lutein 40g</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 18 May 2025 19:33:00 +0800</lastBuildDate>
-    <atom:link href="http://localhost:1313/blog/categories/journal/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 18 May 2025 19:33:00 +0800</lastBuildDate><atom:link href="http://localhost:1313/blog/categories/journal/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>do it.</title>
       <link>http://localhost:1313/blog/post/journal-05192025/</link>
       <pubDate>Sun, 18 May 2025 19:33:00 +0800</pubDate>
+      
       <guid>http://localhost:1313/blog/post/journal-05192025/</guid>
-      <description>Preface I am not sure if the preface would exist in the following posts. The reason why here&amp;rsquo;s a preface is because I decided to start jotting down my feeling and thoughts, and I hope this preface is used as a anchor expalining the beginning for everthing in the future.&#xA;I was kind of lost after failing the interview with Bloomberg. It felt like all the drive and hope was disappear after all that.</description>
+      <description>Preface I am not sure if the preface would exist in the following posts. The reason why here&amp;rsquo;s a preface is because I decided to start jotting down my feeling and thoughts, and I hope this preface is used as a anchor expalining the beginning for everthing in the future.
+I was kind of lost after failing the interview with Bloomberg. It felt like all the drive and hope was disappear after all that.</description>
     </item>
+    
   </channel>
 </rss>
